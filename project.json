@@ -27,13 +27,19 @@
             "shadow.js",
             "windows.js"
         ],
-        "src/": [
-            "loading.js",
-            "main.js"
-        ],
+
         "../../eeditor/plugins/": [
             "physics.js",
             "matter.js"
+        ],
+
+        "src/": [
+            "loading.js",
+            "constants.js",
+            "utils.js",
+            "slingshot.js",
+            "level.js",
+            "main.js"
         ]
     },
     "options": {
@@ -48,7 +54,7 @@
             "__fontface": "Roboto_Thin"
         },
         "__upscaleResolution": {
-            "x": 1234,
+            "x": 1024,
             "y": 768
         },
         "__localesDir": "lang/",
@@ -56,7 +62,6 @@
         "__baseLayoutsFolder": "layouts/",
         "__baseParticlesFolder": "vfx/",
         "__baseFontsFolder": "fonts/",
-        "__baseConfigsFolder": "conf/",
         "__disablePacking": 1
     },
     "res": [
@@ -85,6 +90,8 @@
         [
             "layout",
             "level_1.json",
+            "level_2.json",
+            "level_3.json",
             "win.json"
         ],
         [

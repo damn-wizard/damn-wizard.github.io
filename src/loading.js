@@ -1,9 +1,7 @@
 /*
  * операции по инициаизации загрузки игры, по загрузке ресурсов игры, конфигов
  */
-
 set(__window, '$INIT$', (projectData) => {
-
     document.body.innerHTML = "<div id='gameDiv' style='position:absolute; left:0; top:0;'></div>";
 
     projectData = projectData || globalConfigsData["build_res/opts.json"] || {};
@@ -22,14 +20,12 @@ set(__window, '$INIT$', (projectData) => {
 
             consoleLog('beginLoadGameResources');
 
-            TASKS_RUN( projectData.res, a => {
-
-                BUS.__post(__ON_GAME_LOADED);
-
-            });
+            TASKS_RUN(
+                projectData.res,
+                () => BUS.__post(__ON_GAME_LOADED),
+                errors => consoleError(`Ошибка при загрузке ресурсов: ${errors}`)
+            );
 
         }
     });
-
 });
-

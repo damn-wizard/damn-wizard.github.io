@@ -1,6 +1,12 @@
 [
-    "play",
-    "PLAY",
     "try_again",
-    "TRY AGAIN"
+    "Try again",
+    "next_level",
+    "Next",
+    "level",
+    "Level - {0}",
+    "score",
+    "Score: {0}",
+    "numberOfAttempts",
+    "Number of attempts: {0}"
 ]
