@@ -7,6 +7,14 @@
     "Level - {0}",
     "score",
     "Score: {0}",
-    "numberOfAttempts",
-    "Number of attempts: {0}"
+    "throws",
+    "Throws: {0}",
+    "settings",
+    "Settings",
+    "sound",
+    "Sound",
+    "language",
+    "Language",
+    "win",
+    "Win!"
 ]

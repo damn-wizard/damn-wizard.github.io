@@ -1,0 +1,277 @@
+[
+  {
+    "__color": 0,
+    "name": "settings",
+    "__alpha": 0.7,
+    "__size": [
+      2,
+      2,
+      1,
+      1
+    ],
+    "__keyframes": {
+      "loop": 0,
+      "__loopDisabled": 1,
+      "__track": {
+        "__alphaDeep": {
+          "0": 0,
+          "30": 1
+        }
+      }
+    },
+    "__childs": {
+      "mainContainer": {
+        "__color": "#2134cc",
+        "__padding": [
+          15,
+          30,
+          25,
+          30
+        ],
+        "__img": "circle1",
+        "__corner": [
+          11,
+          11,
+          3,
+          3
+        ],
+        "__size": [
+          600,
+          350
+        ],
+        "__keyframes": {
+          "loop": 0,
+          "__loopDisabled": 1,
+          "__track": {
+            "__transform": {
+              "0": [
+                0,
+                -150,
+                1,
+                1,
+                0
+              ],
+              "30": [
+                0,
+                0,
+                1,
+                1,
+                0
+              ]
+            }
+          }
+        },
+        "__childs": {
+          "closeButton": {
+            "__color": 630770,
+            "__img": "circle1",
+            "sha": 2,
+            "sva": 0,
+            "__size": [
+              60,
+              60
+            ],
+            "__ofs": [
+              55,
+              -40
+            ],
+            "__childs": {
+              "closeButtonIcon": {
+                "__color": "#5f3c27",
+                "__img": "ui/cross.png",
+                "__size": [
+                  0.5,
+                  0.5
+                ]
+              }
+            }
+          },
+          "title": {
+            "sha": 1,
+            "sva": 0,
+            "__size": [
+              300,
+              53
+            ],
+            "__text": {
+              "__fontsize": 42,
+              "__lineWidth": 6,
+              "__fontspacing": 5,
+              "__text": "settings",
+              "__fontface": "Roboto_Black"
+            }
+          },
+          "base": {
+            "__color": 53759,
+            "__padding": [
+              25,
+              30,
+              25,
+              30
+            ],
+            "__img": "ice_block_2",
+            "ha": 2,
+            "va": 3,
+            "sha": 1,
+            "sva": 2,
+            "__size": [
+              1,
+              250,
+              1
+            ],
+            "__childs": {
+              "row_1": {
+                "__size": [
+                  1,
+                  100
+                ],
+                "__childs": {
+                  "row_1_name": {
+                    "sha": 0,
+                    "sva": 1,
+                    "__size": [
+                      285,
+                      100
+                    ],
+                    "__text": {
+                      "__fontsize": 36,
+                      "__lineWidth": 5,
+                      "__fontspacing": 3,
+                      "__text": "sound",
+                      "__fontface": "Roboto_Black"
+                    }
+                  },
+                  "row_1_actions": {
+                    "ha": 4,
+                    "va": 1,
+                    "sha": 2,
+                    "sva": 1,
+                    "__size": [
+                      135,
+                      60,
+                      "o"
+                    ],
+                    "__childs": {
+                      "soundOnButton": {
+                        "__color": 0.9961,
+                        "__size": [
+                          60,
+                          1
+                        ],
+                        "__childs": {
+                          "soundOnButtonIcon": {
+                            "__img": "ui/sound-on.png",
+                            "__size": [
+                              0.7,
+                              0.7
+                            ]
+                          }
+                        }
+                      },
+                      "soundOffButton": {
+                        "__color": 0.9961,
+                        "__spacing": [
+                          0,
+                          0,
+                          0,
+                          15
+                        ],
+                        "__size": [
+                          60,
+                          1
+                        ],
+                        "__childs": {
+                          "soundOffButtonIcon": {
+                            "__img": "ui/sound-off.png",
+                            "__size": [
+                              0.7,
+                              0.7
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "row_2": {
+                "__size": [
+                  1,
+                  100
+                ],
+                "__childs": {
+                  "row_2_name": {
+                    "sha": 0,
+                    "sva": 1,
+                    "__size": [
+                      285,
+                      1
+                    ],
+                    "__text": {
+                      "__fontsize": 36,
+                      "__lineWidth": 5,
+                      "__fontspacing": 3,
+                      "__text": "language",
+                      "__fontface": "Roboto_Black"
+                    }
+                  },
+                  "row_2_actions": {
+                    "ha": 4,
+                    "va": 1,
+                    "sha": 2,
+                    "sva": 1,
+                    "__size": [
+                      135,
+                      60,
+                      "o"
+                    ],
+                    "__childs": {
+                      "enLangButton": {
+                        "__color": 0.9961,
+                        "__size": [
+                          60,
+                          1
+                        ],
+                        "__childs": {
+                          "enLangButtonIcon": {
+                            "__img": "ui/flag-usa.png",
+                            "__size": [
+                              0.7,
+                              0.7
+                            ]
+                          }
+                        }
+                      },
+                      "ruLangButton": {
+                        "__color": 0.997,
+                        "__spacing": [
+                          0,
+                          0,
+                          0,
+                          15
+                        ],
+                        "__size": [
+                          60,
+                          1
+                        ],
+                        "__childs": {
+                          "ruLangButtonIcon": {
+                            "__img": "ui/flag-russia.png",
+                            "__size": [
+                              0.7,
+                              0.7
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

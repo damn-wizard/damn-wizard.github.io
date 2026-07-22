@@ -1,22 +1,23 @@
 class Level {
     constructor(levelName) {
+        if (!levelName) {
+            throw new Error('[Level]: Название уровня не было передано');
+        }
+
         this._levelName = levelName;
         this._level = null;
         this._blocks = [];
         this._destructableBlocks = 0;
-        this._levelScoreTextNode = null;
-        this.levelNumberOfAttempts = null;
 
         this._awakeBlocks = this._awakeBlocks.bind(this);
         this._collisionStartHandler = this._collisionStartHandler.bind(this);
-        this._initLevelInfo = this._initLevelInfo.bind(this);
     }
 
     get levelName() {
         return this._levelName;
     }
 
-    _awakeBlocks()  {
+    _awakeBlocks() {
         $each(this._blocks, b => {
             b.__ph_awake();
         });
@@ -34,26 +35,6 @@ class Level {
 
             if (bodyB && bodyB.__onCollision) {
                 bodyB.__onCollision(speed);
-            }
-        }
-    }
-
-    _initLevelInfo() {
-        return {
-            levelName: (node) => {
-                const [, levelNumber] = this._levelName.split(LEVEL_NAME_SEPARATOR);
-
-                node.__text = TR('level', levelNumber)
-            },
-            levelScore: (node) => {
-                this._levelScoreTextNode = node;
-
-                node.__text = TR('score', levelState.score)
-            },
-            levelNumberOfAttempts: (node) => {
-                this._levelNumberOfAttempts = node;
-
-                node.__text = TR('numberOfAttempts', levelState.numberOfAttempts)
             }
         }
     }
@@ -146,8 +127,8 @@ class Level {
 
         this._looperPostOne(this._awakeBlocks);
 
-        if (blockCost) {
-            this.updateScore(blockCost);
+        if (blockCost && !windowManager.__hasOpenedWindow()) {
+            BUS.__post(__ON_ADD_SCORE, blockCost);
         }
 
         if (block.__needBreaks) {
@@ -175,7 +156,7 @@ class Level {
 
             if (this._destructableBlocks === 0) {
                 _setTimeout(() => {
-                    showWin();
+                    BUS.__post(__ON_SHOW_WIN_WINDOW);
                 }, 1);
             }
         } else {
@@ -183,7 +164,6 @@ class Level {
                 playSound('break_' + randomInt(1, 4), 0, 0, 0.5);
             }
         }
-
     }
 
     _initCollision(body, node, hp, cost) {
@@ -212,10 +192,16 @@ class Level {
 
         ph_Events.off(ph_Engine, 'collisionStart', this._collisionStartHandler);
 
-        removeLevelNode(this._level)
+        const parent = this._level.__parent;
+        const name = this._level.name;
 
-        levelState.score = 0;
-        levelState.numberOfAttempts = 0;
+        if (parent) {
+            this._level.__removeFromParent();
+        }
+
+        if (parent && name && parent[name] === this._level) {
+            delete parent[name];
+        }
 
         if (isRestart) {
             this._blocks = [];
@@ -223,31 +209,19 @@ class Level {
         }
     }
 
-    updateNumberOfAttempts() {
-        this._levelNumberOfAttempts.__text = TR('numberOfAttempts', levelState.numberOfAttempts)
-    }
-
-    updateScore(blockCost) {
-        levelState.score += blockCost;
-
-        this._levelScoreTextNode.__text = TR('score', levelState.score)
-    }
-
     open() {
-        const level = scene.__addChildBox(this._levelName);
-
-        this._level = level;
+        this._level = scene.__addChildBox(this._levelName);
 
         const slingshotParams = new Slingshot(this._level).configuredParams;
+        const cloudsParams = new Clouds(this._level).configuredParams;
+        const topPanelParams = new TopPanel(this._levelName).configuredParams;
 
-        level.__setAliasesData(Object.assign(slingshotParams, this._initLevelInfo()))
+        this._level.__setAliasesData(Object.assign(slingshotParams, cloudsParams, topPanelParams))
 
         this._level.update(1);
 
-        // настраиваем коллизии для отработки повреждения блоков
         ph_Events.on(ph_Engine, 'collisionStart', this._collisionStartHandler);
 
-        // проходим по уровню и инициализируем блоки
         this._level.__traverse(node => {
             const body = node.__ph_body;
 
@@ -258,13 +232,17 @@ class Level {
                 this._initCollision(body, node, 100, 50);
             }
         });
+
+        playSound('main-theme', 1);
+
+        BUS.__post(__ON_LEVEL_OPENED);
     }
 
     close() {
         this._reset();
 
         if (this._level.__destructed) {
-            BUS.__post(__ON_LEVEL_CLOSED)
+            BUS.__post(__ON_LEVEL_CLOSED);
         }
     }
 

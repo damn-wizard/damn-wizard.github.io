@@ -36,9 +36,13 @@
         "src/": [
             "loading.js",
             "constants.js",
-            "utils.js",
-            "slingshot.js",
+            "windows/settings-window.js",
+            "windows/win-window.js",
+            "weapons/slingshot.js",
+            "environment/clouds.js",
+            "ui/top-panel.js",
             "level.js",
+            "game.js",
             "main.js"
         ]
     },
@@ -54,15 +58,16 @@
             "__fontface": "Roboto_Thin"
         },
         "__upscaleResolution": {
-            "x": 1024,
-            "y": 768
+            "x": 1280,
+            "y": 720
         },
         "__localesDir": "lang/",
         "__baseShadersFolder": "shaders/",
         "__baseLayoutsFolder": "layouts/",
         "__baseParticlesFolder": "vfx/",
         "__baseFontsFolder": "fonts/",
-        "__disablePacking": 1
+        "__disablePacking": 1,
+        "__soundDisabled": 1
     },
     "res": [
         [
@@ -78,13 +83,19 @@
             "build_res/atlas-0.json?"
         ],
         [
+            "atlas",
+            "build_res/atlas-1.png?",
+            "build_res/atlas-1.json?"
+        ],
+        [
             "effect",
             "tail.effect.json"
         ],
         [
             "font",
             [
-                "Roboto-Thin"
+                "Roboto-Thin",
+                "Roboto-Black"
             ]
         ],
         [
@@ -92,7 +103,8 @@
             "level_1.json",
             "level_2.json",
             "level_3.json",
-            "win.json"
+            "win.json",
+            "settings.json"
         ],
         [
             "shaders",
@@ -121,7 +133,10 @@
                 "name": "atlas",
                 "width": 512,
                 "height": 512,
-                "src": "./img/*.*",
+                "src": [
+                    "./img/game-elements/*.*",
+                    "./img/ui/*.*"
+                ],
                 "dst": "build_res/",
                 "format": "short",
                 "arrayFormat": 1
@@ -155,7 +170,8 @@
                     "vfx/*",
                     "build_res/*.json",
                     "build_res/*.png",
-                    "build_res/*.mp3"
+                    "build_res/*.mp3",
+                    "img/environment/*.png"
                 ],
                 "dst": "build_res/data.js"
             },
