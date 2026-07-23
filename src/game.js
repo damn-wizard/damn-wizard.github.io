@@ -5,8 +5,12 @@ class Game {
 
         this._score = 0;
         this._throws = 0;
+        this._destructableBlocksCount = 0;
 
         // level traveling
+        BUS.__addEventListener(__ON_LEVEL_OPENED, (_type, destructableBlocksCount) => {
+            this._destructableBlocksCount = destructableBlocksCount;
+        });
         BUS.__addEventListener(__ON_CHANGE_LEVEL, () => {
             this._goToNextLevel();
         });
@@ -17,8 +21,8 @@ class Game {
         BUS.__addEventListener(__ON_SHOW_SETTINGS_WINDOW, () => {
             this._showSettingsWindow();
         });
-        BUS.__addEventListener(__ON_SHOW_WIN_WINDOW, () => {
-            this._showWinWindow();
+        BUS.__addEventListener(__ON_SHOW_WIN_WINDOW, (_type, maxScore) => {
+            this._showWinWindow(maxScore);
         });
         // player data
         BUS.__addEventListener(__ON_SHOOT, () => {
@@ -26,7 +30,7 @@ class Game {
 
             BUS.__post(__ON_THROWS_COUNT_UPDATED, this._throws);
         });
-        BUS.__addEventListener(__ON_ADD_SCORE, (type, value) => {
+        BUS.__addEventListener(__ON_ADD_SCORE, (_type, value) => {
             this._score += value;
 
             BUS.__post(__ON_SCORE_VALUE_UPDATED, this._score);
@@ -36,6 +40,7 @@ class Game {
     _resetLevelState() {
         this._score = 0;
         this._throws = 0;
+        this._destructableBlocksCount = 0;
     }
 
     _getNextLevelName() {
@@ -80,15 +85,22 @@ class Game {
         })
     }
 
-    _showWinWindow() {
+    _showWinWindow(maxScore) {
         stopSound('main-theme');
 
         playSound('win');
 
-        const winWindow = new WinWindow(this._score, this._throws);
+        const winWindow = new WinWindow(
+            this._score,
+            this._throws,
+            maxScore,
+            this._destructableBlocksCount
+        );
 
         showWindow(WIN_WINDOW, window => {
             window.__setAliasesData(winWindow.configuredParams);
+
+            winWindow.calculateStars();
         })
 
     }

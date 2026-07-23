@@ -28,6 +28,25 @@ const MAX_BULLET_VELOCITY = 75;
 const MAX_SLINGSHOT_RUBBER_LENGTH = 50;
 const CLOUDS_TIME = 60;
 const REMOVE_BULLET_FROM_LEVEL_TIME = 2;
+const BIG_BLOCK_HP = 100;
+const BREAK_BLOCK_HP = 50;
+const BIG_BLOCK_SCORE_VALUE = 50;
+const BREAK_BLOCK_SCORE_MAP = new Map([
+    ['break_1', 10],
+    ['break_2', 10],
+    ['break_3', 10],
+    ['break_4', 10],
+    ['break_5', 5],
+    ['break_6', 0],
+    ['break_7', 0],
+    ['break_8', 0],
+    ['break_9', 10],
+]);
+const BREAK_STEP = 50;
+const RATING_FOR_TWO_STARS = 0.55;
+const RATING_FOR_THREE_STARS = 0.85;
+const SCORE_WEIGHT_RATING = 0.35;
+const THROW_WEIGHT_RATING = 0.65;
 
 // Local storage
 const LS_SOUND_DISABLED_VALUE = 'sound';

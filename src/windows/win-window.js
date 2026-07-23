@@ -1,13 +1,22 @@
 class WinWindow {
-    constructor(score, throws) {
+    constructor(score, throws, maxScore, destructableBlocksCount) {
         this._score = score;
         this._throws = throws;
+        this._maxScore = maxScore;
+        this._destructableBlocksCount = destructableBlocksCount;
+
+        this._firstStarNode = null;
+        this._secondStarNode = null;
+        this._thirdStarNode = null;
 
         this._configuredParams = {
             againButton: this._configureAgainButton.bind(this),
             nextButton: this._configureNextButton.bind(this),
             levelScore: this._configureLevelScore.bind(this),
             levelThrowsCount: this._configureLevelThrowsCount.bind(this),
+            firstStar: this._configureFirstStar.bind(this),
+            secondStar: this._configureSecondStar.bind(this),
+            thirdStar: this._configureThirdStar.bind(this),
         }
     }
 
@@ -39,5 +48,39 @@ class WinWindow {
 
     _configureLevelThrowsCount(node) {
         node.__text = TR('throws', this._throws);
+    }
+
+    _configureFirstStar(node) {
+        node.____visible = 0;
+        this._firstStarNode = node;
+    }
+
+    _configureSecondStar(node) {
+        node.____visible = 0;
+        this._secondStarNode = node;
+    }
+
+    _configureThirdStar(node) {
+        node.____visible = 0;
+        this._thirdStarNode = node;
+    }
+
+    calculateStars() {
+        const bigBlockScoreSummary = this._destructableBlocksCount * BIG_BLOCK_SCORE_VALUE;
+
+        const scoreEffective = Math.min(1, bigBlockScoreSummary / this._maxScore);
+        const throwEffective = Math.min(1, this._destructableBlocksCount / Math.max(this._throws, 1));
+
+        const levelRating = scoreEffective * SCORE_WEIGHT_RATING + throwEffective * THROW_WEIGHT_RATING;
+
+        this._firstStarNode.__visible = 1;
+
+        if (levelRating >= RATING_FOR_TWO_STARS) {
+            this._secondStarNode.__visible = 1;
+        }
+
+        if (levelRating >= RATING_FOR_THREE_STARS) {
+            this._thirdStarNode.__visible = 1;
+        }
     }
 }

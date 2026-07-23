@@ -1599,7 +1599,7 @@
                 ],
                 "__y": -98,
                 "__childs": {
-                  "firstStart": {
+                  "firstStar": {
                     "__rotate": 10.87,
                     "__img": "star",
                     "sva": 1.1,
@@ -1636,7 +1636,7 @@
                       }
                     }
                   },
-                  "secondStart": {
+                  "secondStar": {
                     "__img": "star",
                     "sva": 1.1,
                     "__size": [
@@ -1679,7 +1679,7 @@
                       }
                     }
                   },
-                  "thirdStart": {
+                  "thirdStar": {
                     "__rotate": -13.21,
                     "__img": "star",
                     "sva": 1.1,

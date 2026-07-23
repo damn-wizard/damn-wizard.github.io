@@ -7,7 +7,8 @@ class Level {
         this._levelName = levelName;
         this._level = null;
         this._blocks = [];
-        this._destructableBlocks = 0;
+        this._destructableBlocksCount = 0;
+        this._maxScore = 0;
 
         this._awakeBlocks = this._awakeBlocks.bind(this);
         this._collisionStartHandler = this._collisionStartHandler.bind(this);
@@ -69,8 +70,10 @@ class Level {
     }
 
     _addBreakBlock(x, y, velocity) {
+        const image = `break_${randomInt(1, 9)}`;
+
         const breakBlock = this._level.__addChildBox({
-            __img: `break_${randomInt(1, 9)}`,
+            __img: image,
             __ofs: [x, y, -20],
             __rotate: randomInt(0, 360),
             __physics: {
@@ -106,7 +109,11 @@ class Level {
                     return;
                 }
 
-                this._initCollision(body, breakBlock, 50, 10);
+                const blockScoreValue = BREAK_BLOCK_SCORE_MAP.has(image) && this._destructableBlocksCount > 0
+                    ? BREAK_BLOCK_SCORE_MAP.get(image)
+                    : 0;
+
+                this._initCollision(body, breakBlock, BREAK_BLOCK_HP, blockScoreValue);
 
                 _setTimeout(() => {
                     if (!breakBlock.__destructed) {
@@ -137,11 +144,12 @@ class Level {
             const velocity = body.velocity;
             const angle = body.angle;
             const center = new Vector2(body.position.x, body.position.y);
-            const step = 50;
+            const { x: sizeX, y: sizeY } = size;
 
-            for (let x = 0; x < size.x; x += step) {
-                for (let y = 0; y < size.y; y += step) {
-                    const localPosition = new Vector2(x - size.x / 2, y - size.y / 2);
+            for (let x = 0; x < sizeX; x += BREAK_STEP) {
+                for (let y = 0; y < sizeY; y += BREAK_STEP) {
+                    const localPosition = new Vector2(x - sizeX / 2, y - sizeY / 2);
+
                     localPosition.__rotateAroundZ0(angle);
 
                     this._addBreakBlock(
@@ -152,11 +160,11 @@ class Level {
                 }
             }
 
-            this._destructableBlocks--;
+            this._destructableBlocksCount--;
 
-            if (this._destructableBlocks === 0) {
+            if (this._destructableBlocksCount === 0) {
                 _setTimeout(() => {
-                    BUS.__post(__ON_SHOW_WIN_WINDOW);
+                    BUS.__post(__ON_SHOW_WIN_WINDOW, this._maxScore);
                 }, 1);
             }
         } else {
@@ -168,6 +176,8 @@ class Level {
 
     _initCollision(body, node, hp, cost) {
         this._blocks.push(node);
+
+        this._maxScore += cost;
 
         body.__hp = hp;
         body.__onCollision = (speed) => {
@@ -205,7 +215,8 @@ class Level {
 
         if (isRestart) {
             this._blocks = [];
-            this._destructableBlocks = 0;
+            this._destructableBlocksCount = 0;
+            this._maxScore = 0;
         }
     }
 
@@ -228,14 +239,14 @@ class Level {
             if (body && !body.isStatic && !!node.__isBreakable) {
                 node.__needBreaks = 1;
 
-                this._destructableBlocks++;
-                this._initCollision(body, node, 100, 50);
+                this._destructableBlocksCount++;
+                this._initCollision(body, node, BIG_BLOCK_HP, BIG_BLOCK_SCORE_VALUE);
             }
         });
 
         playSound('main-theme', 1);
 
-        BUS.__post(__ON_LEVEL_OPENED);
+        BUS.__post(__ON_LEVEL_OPENED, this._destructableBlocksCount);
     }
 
     close() {
