@@ -6,81 +6,201 @@ class Slingshot {
 
         this._level = level;
 
-        this._rubberNode = null;
+        this._leftRubberAnchor = null;
+        this._rubberLeft = null;
+        this._rightRubberAnchor = null;
+        this._rubberRight = null;
+        this._shotOrigin = null;
+        this._slingshot = null;
+        this._userInputArea = null;
 
-        this._configuredParams = {
-            rubber: this._configureRubber.bind(this),
-            userInputArea: this._configureUserInputArea.bind(this),
-        }
+        this._shotOriginLocalPosition = null;
+        this._shotOriginWorldPosition = null;
+        this._leftRubberAnchorLocalPosition = null;
+        this._rightRubberAnchorLocalPosition = null;
+
+        this._projectile = new Projectile(this._level);
+        this._predictionPath = new PredictionPath(this._level);
+
+        this._currentPowerPull = new Vector2()
+        this._currentVisualPull = new Vector2()
+
+        this._isReloading = false;
+
+        BUS.__addEventListener(__ON_LEVEL_OPENED, () => {
+            this._init();
+
+            return 1;
+        });
     }
 
-    get configuredParams() {
-        return this._configuredParams;
+    get _calculatedLoadedProjectileWorldPosition() {
+        return this._projectile.calculateLoadedPosition(this._shotOriginWorldPosition, this._currentVisualPull);
     }
 
-    _configureRubber(node) {
-        this._rubberNode = node;
+    get _rubbersContactPoint() {
+        const projectileLocalPosition = this._projectile.calculateLoadedPosition(this._shotOriginLocalPosition, this._currentVisualPull);
+
+        if (!this._currentPowerPull || this._currentPowerPull.__length() < 0.001) {
+            return projectileLocalPosition;
+        }
+
+        return projectileLocalPosition.add(
+            this._currentPowerPull
+                .__clone()
+                .__normalize()
+                .__multiplyScalar(SLINGSHOT_RUBBER_CONTACT_RADIUS)
+        );
     }
 
-    _configureUserInputArea(node) {
-        node.__dragDist = 1;
-        node.__drag = (x, y) => {
-            const dmouse = node.__dmouse = node.__worldPosition.__clone().sub(new Vector2(x, y));
+    _generate() {
+        this._slingshot = this._level
+            .__addChildBox('slingshot')
+            .__setAliasesData({
+                rubberAnchorLeft: (node) => {
+                    this._leftRubberAnchor = node;
+                },
+                rubberAnchorRight: (node) => {
+                    this._rightRubberAnchor = node;
+                },
+                rubberLeft: (node) => {
+                    this._rubberLeft = node;
+                },
+                rubberRight: (node) => {
+                    this._rubberRight = node;
+                },
+                shotOrigin: (node) => {
+                    this._shotOrigin = node;
+                },
+                userInputArea: (node) => {
+                    node.__dragDist = 1;
+                    node.__dragStart = () => {
+                        if (this._isReloading || this._projectile.isDestructed) {
+                            return;
+                        }
 
-            this._rubberNode.__parent.__rotate = -dmouse.__angle() * RAD2DEG;
+                        this._predictionPath.create();
+                        this._predictionPath.update(this._calculatedLoadedProjectileWorldPosition, this._currentPowerPull);
+                    };
+                    node.__drag = (x, y) => {
+                        const powerPull = new Vector2(
+                            x - node.__worldPosition.x,
+                            y - node.__worldPosition.y
+                        );
 
-            const length = dmouse.__length();
+                        powerPull.x = mmin(0, powerPull.x);
+                        powerPull.y = powerPull.x < SLINGSHOT_MAX_POWER_PULL ? mmin(85, powerPull.y) : powerPull.y
 
-            if (length <= MAX_SLINGSHOT_RUBBER_LENGTH) {
-                this._rubberNode.__width = length;
-            }
-        }
-        node.__dragStart = () => {
-            this._rubberNode.__killAllAnimations();
-        }
-        node.__dragEnd = () => {
-            playSound('punch');
+                        this._constraintPull(powerPull, SLINGSHOT_MAX_POWER_PULL);
+                        this._updatePull(powerPull);
+                    };
+                    node.__dragEnd = () => {
+                        this._predictionPath.hide();
 
-            BUS.__post(__ON_SHOOT);
+                        if (this._currentPowerPull.__length() < SLINGSHOT_MIN_SHOT_PULL) {
+                            this._updatePull(new Vector2());
 
-            this._rubberNode.__anim(
-                { __width: 10 },
-                0.4,
-                0,
-                easeElasticO
-            );
+                            return;
+                        }
 
-            const wp = node.__worldPosition;
-            const bullet = this._level.__addChildBox({
-                __effect: 'tail',
-                __img: 'circle1',
-                __size: [28, 28],
-                __ofs: [wp.x, wp.y, -20],
-                __physics: {
-                    __isStatic: false,
-                    __friction: 130,
-                    __frictionAir: 0.2,
-                    __frictionStatic: 500,
-                    __restitution: 10,
-                    __density: 4,
-                    __bodyType: 1
+                        playSound('punch');
+
+                        this._projectile.launch(this._shotOriginWorldPosition, this._currentVisualPull, this._currentPowerPull);
+                        this._resetRubbers();
+                        this._startBulletReload();
+                    }
+
+                    this._userInputArea = node;
                 }
-            }).update();
+            });
 
-            const velocity = node.__dmouse.__multiplyScalar(0.2);
+        this._slingshot.update()
+        this._slingshot.__updateMatrixWorld();
+    }
 
-            if (velocity.__length() > MAX_BULLET_VELOCITY) {
-                velocity.__normalize().__multiplyScalar(MAX_BULLET_VELOCITY);
-            }
+    _init() {
+        this._generate();
 
-            if (bullet.__ph_body) {
-                ph_Body.setVelocity(bullet.__ph_body, velocity);
-            }
+        const {x: leftRubberX, y: leftRubberY} = this._leftRubberAnchor.__layoutPosition;
+        const {x: rightRubberX, y: rightRubberY} = this._rightRubberAnchor.__layoutPosition;
 
-           _setTimeout(() => {
-                bullet.__removeFromParent();
-            }, REMOVE_BULLET_FROM_LEVEL_TIME);
+        this._leftRubberAnchorLocalPosition = new Vector2(leftRubberX, leftRubberY);
+        this._rightRubberAnchorLocalPosition = new Vector2(rightRubberX, rightRubberY);
+
+        const {x: shotOriginX, y: shotOriginY} = this._shotOrigin.__layoutPosition;
+
+        this._shotOriginLocalPosition = new Vector2(shotOriginX, shotOriginY);
+        this._shotOriginWorldPosition = this._shotOrigin.__worldPosition.__clone();
+
+        this._resetRubbers();
+        this._projectile.createLoadedProjectile(this._slingshot, this._shotOriginLocalPosition);
+        this._predictionPath.hide();
+    }
+
+    _resetRubbers() {
+        this._currentVisualPull.set(0, 0);
+        this._currentPowerPull.set(0, 0);
+
+        this._updateRubbers();
+    }
+
+    _updateRubbers() {
+        this._updateRubber(this._rubberRight, this._rightRubberAnchorLocalPosition);
+        this._updateRubber(this._rubberLeft, this._leftRubberAnchorLocalPosition);
+    }
+
+    _updateRubber(node, anchor) {
+        const delta = this._rubbersContactPoint.__clone().sub(anchor);
+        const center = anchor.__clone().add(this._rubbersContactPoint).__multiplyScalar(0.5);
+
+        node.__width = delta.__length();
+        node.__x = center.x;
+        node.__y = center.y;
+        node.__rotate = -delta.__angle() * RAD2DEG;
+    }
+
+    _constraintPull(pull, maxLength) {
+        const length = pull.__length();
+
+        if (length > maxLength) {
+            pull.__multiplyScalar(maxLength / length);
         }
+    }
+
+    _getVisualPull(powerPull) {
+        const visualPull = powerPull.__clone().__multiplyScalar(SLINGSHOT_VISUAL_PULL_SCALE);
+
+        this._constraintPull(visualPull, SLINGSHOT_MAX_VISUAL_PULL);
+
+        return visualPull;
+    }
+
+    _updatePull(powerPull) {
+        this._currentPowerPull.__copy(powerPull);
+        this._currentVisualPull.__copy(this._getVisualPull(powerPull));
+
+        this._updateRubbers();
+        this._projectile.updateLoadedProjectilePosition(this._shotOriginLocalPosition, this._currentVisualPull, this._currentPowerPull);
+        this._predictionPath.update(this._calculatedLoadedProjectileWorldPosition, this._currentPowerPull);
+    }
+
+    _startBulletReload() {
+        if (this._isReloading) {
+            return;
+        }
+
+        this._isReloading = true;
+        this._userInputArea.__disabled = true;
+
+        _setTimeout(() => {
+            if (this._projectile.isDestructed) {
+                this._projectile.createLoadedProjectile(this._slingshot, this._shotOriginLocalPosition);
+            }
+
+            this._resetRubbers();
+            this._isReloading = false;
+            this._userInputArea.__disabled = false;
+        }, SLINGSHOT_RELOAD_DELAY);
     }
 }
 

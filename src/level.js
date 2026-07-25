@@ -223,13 +223,15 @@ class Level {
     open() {
         this._level = scene.__addChildBox(this._levelName);
 
-        const slingshotParams = new Slingshot(this._level).configuredParams;
+        new Slingshot(this._level);
+
         const cloudsParams = new Clouds(this._level).configuredParams;
         const topPanelParams = new TopPanel(this._levelName).configuredParams;
 
-        this._level.__setAliasesData(Object.assign(slingshotParams, cloudsParams, topPanelParams))
+        this._level.__setAliasesData(Object.assign(cloudsParams, topPanelParams))
 
         this._level.update(1);
+        this._level.__updateMatrixWorld(1);
 
         ph_Events.on(ph_Engine, 'collisionStart', this._collisionStartHandler);
 

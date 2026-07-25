@@ -38,6 +38,8 @@
             "constants.js",
             "windows/settings-window.js",
             "windows/win-window.js",
+            "weapons/projectile.js",
+            "weapons/prediction-path.js",
             "weapons/slingshot.js",
             "environment/clouds.js",
             "ui/top-panel.js",
@@ -104,7 +106,8 @@
             "level_2.json",
             "level_3.json",
             "win.json",
-            "settings.json"
+            "settings.json",
+            "slingshot.json"
         ],
         [
             "shaders",

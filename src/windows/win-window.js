@@ -68,8 +68,8 @@ class WinWindow {
     calculateStars() {
         const bigBlockScoreSummary = this._destructableBlocksCount * BIG_BLOCK_SCORE_VALUE;
 
-        const scoreEffective = Math.min(1, bigBlockScoreSummary / this._maxScore);
-        const throwEffective = Math.min(1, this._destructableBlocksCount / Math.max(this._throws, 1));
+        const scoreEffective = mmin(1, bigBlockScoreSummary / this._maxScore);
+        const throwEffective = mmin(1, this._destructableBlocksCount / mmax(this._throws, 1));
 
         const levelRating = scoreEffective * SCORE_WEIGHT_RATING + throwEffective * THROW_WEIGHT_RATING;
 

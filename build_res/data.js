@@ -122,42 +122,6 @@
           }
         }
       },
-      "userInputArea": {
-        "__color": "#5f12e9",
-        "__selectable": false,
-        "sha": 0,
-        "sva": 2,
-        "__size": [
-          140,
-          100
-        ],
-        "__ofs": [
-          105,
-          -96,
-          -15
-        ],
-        "__childs": {
-          "_0": {
-            "__color": "#fb22a0",
-            "__rotate": 3.9,
-            "__size": [
-              25,
-              25
-            ],
-            "__childs": {
-              "rubber": {
-                "__color": "#362207",
-                "sha": 2,
-                "sva": 1,
-                "__size": [
-                  148,
-                  18
-                ]
-              }
-            }
-          }
-        }
-      },
       "ph_world": {
         "__size": [
           1,
@@ -165,7 +129,6 @@
         ],
         "__childs": {
           "_0": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -178,8 +141,8 @@
             "__img": "ice_block_1.png",
             "__class": "test_class",
             "__ofs": [
-              185,
-              -75,
+              393,
+              -27,
               -1
             ]
           },
@@ -213,7 +176,6 @@
             }
           },
           "_2": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -223,20 +185,18 @@
               "__density": 1,
               "__bodyType": 0
             },
-            "__rotate": 9.52,
             "__img": "ice_block_2.png",
             "__size": [
-              147,
-              45
+              189,
+              61
             ],
             "__ofs": [
-              335,
-              80,
+              394,
+              66,
               -1
             ]
           },
           "_3": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -246,20 +206,18 @@
               "__density": 1,
               "__bodyType": 0
             },
-            "__rotate": -31.43,
             "__img": "ice_block_3.png",
             "__size": [
-              59,
-              151
+              60,
+              158
             ],
             "__ofs": [
-              227,
+              303,
               176,
               -1
             ]
           },
           "_4": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -269,20 +227,18 @@
               "__density": 1,
               "__bodyType": 0
             },
-            "__rotate": 16.91,
             "__img": "ice_block_3.png",
             "__size": [
-              43,
+              60,
               158
             ],
             "__ofs": [
-              423,
-              170,
+              494,
+              176,
               -1
             ]
           },
           "_5": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -298,7 +254,7 @@
               126
             ],
             "__ofs": [
-              335,
+              398,
               190,
               -1
             ]
@@ -321,6 +277,27 @@
               1
             ],
             "__x": 674
+          },
+          "_7": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "ice_block_3.png",
+            "__size": [
+              60,
+              158
+            ],
+            "__ofs": [
+              47,
+              176,
+              -1
+            ]
           }
         }
       },
@@ -382,7 +359,7 @@
             ],
             "__text": {
               "__lineWidth": 5,
-              "__text": "Очки: 0",
+              "__text": "score",
               "__fontface": "Roboto_Black"
             }
           },
@@ -437,7 +414,7 @@
                 ],
                 "__text": {
                   "__lineWidth": 5,
-                  "__text": "Броски: 0",
+                  "__text": "throws",
                   "__fontface": "Roboto_Black",
                   "__fontWeight": 2
                 }
@@ -1512,6 +1489,210 @@
   }
 ]
 ,
+"layouts/slingshot.json":[
+  {
+    "name": "slingshot",
+    "sha": 0,
+    "sva": 2,
+    "__size": [
+      195,
+      356
+    ],
+    "__ofs": [
+      92,
+      -82,
+      -10
+    ],
+    "__childs": {
+      "stem": {
+        "__color": "#9a5b15",
+        "__img": "circle1",
+        "sha": 1,
+        "sva": 1,
+        "__corner": [
+          11,
+          11
+        ],
+        "__size": [
+          30,
+          70
+        ],
+        "__y": 120,
+        "__z": -10
+      },
+      "joint": {
+        "__color": "#9a5b15",
+        "__img": "circle1",
+        "sha": 1,
+        "sva": 1,
+        "__corner": [
+          11,
+          11
+        ],
+        "__size": [
+          46,
+          30
+        ],
+        "__y": 81,
+        "__z": -10
+      },
+      "armLeft": {
+        "__color": "#9a5b15",
+        "__rotate": 112,
+        "sha": 1,
+        "sva": 1,
+        "__size": [
+          100,
+          25
+        ],
+        "__ofs": [
+          -29,
+          26,
+          -21
+        ]
+      },
+      "armRight": {
+        "__color": "#9a5b15",
+        "__rotate": 68,
+        "sha": 1,
+        "sva": 1,
+        "__size": [
+          100,
+          25
+        ],
+        "__ofs": [
+          29,
+          26
+        ]
+      },
+      "leftWrap": {
+        "__color": "#3a210f",
+        "__rotate": 22,
+        "__img": "circle1",
+        "sha": 1,
+        "sva": 1,
+        "__corner": [
+          11,
+          11
+        ],
+        "__size": [
+          40,
+          24
+        ],
+        "__ofs": [
+          -38,
+          5,
+          -22
+        ]
+      },
+      "rubberAnchorLeft": {
+        "__alpha": 0,
+        "sha": 1,
+        "sva": 1,
+        "__size": [
+          2,
+          2
+        ],
+        "__ofs": [
+          -44,
+          -1,
+          -1
+        ]
+      },
+      "rubberLeft": {
+        "__color": "#5a321f",
+        "sha": 1,
+        "sva": 1,
+        "__size": [
+          50,
+          7
+        ],
+        "__ofs": [
+          -21,
+          -1,
+          -3
+        ]
+      },
+      "rightWrap": {
+        "__color": "#3a210f",
+        "__rotate": -22,
+        "__img": "circle1",
+        "sha": 1,
+        "sva": 1,
+        "__corner": [
+          11,
+          11
+        ],
+        "__size": [
+          40,
+          24
+        ],
+        "__ofs": [
+          38,
+          5,
+          -5
+        ]
+      },
+      "rubberAnchorRight": {
+        "__alpha": 0,
+        "sha": 1,
+        "sva": 1,
+        "__size": [
+          2,
+          2
+        ],
+        "__ofs": [
+          44,
+          -1,
+          -1
+        ]
+      },
+      "rubberRight": {
+        "__color": "#5a321f",
+        "sha": 1,
+        "sva": 1,
+        "__size": [
+          50,
+          7
+        ],
+        "__ofs": [
+          21,
+          -1,
+          -1
+        ]
+      },
+      "shotOrigin": {
+        "__alpha": 0,
+        "sha": 1,
+        "sva": 1,
+        "__size": [
+          2,
+          2
+        ],
+        "__ofs": [
+          0,
+          -1,
+          -1
+        ]
+      },
+      "userInputArea": {
+        "__alpha": 0,
+        "sha": 1,
+        "sva": 1,
+        "__size": [
+          62,
+          54
+        ],
+        "__ofs": [
+          0,
+          -3,
+          -8
+        ]
+      }
+    }
+  }
+]
+,
 "layouts/win.json":[
   {
     "__color": 0,
@@ -1950,7 +2131,7 @@
 ,
 "build_res/atlas-1.json":[["ice_block_4",1,1,126,131]]
 ,
-"build_res/opts.json":{"options":{"__disableCache":0,"__disableCacheByVer":0,"__storeChildsAsObject":1,"__supportedLangs":["en","ru"],"__defaultTextProperties":{"__fontface":"Roboto_Thin"},"__upscaleResolution":{"x":1280,"y":720},"__localesDir":"lang/","__baseShadersFolder":"shaders/","__baseLayoutsFolder":"layouts/","__baseParticlesFolder":"vfx/","__baseFontsFolder":"fonts/","__disablePacking":1,"__soundDisabled":1},"res":[["locale"],["sound","build_res/sounds.json"],["atlas","build_res/atlas-0.png?","build_res/atlas-0.json?"],["atlas","build_res/atlas-1.png?","build_res/atlas-1.json?"],["effect","tail.effect.json"],["font",["Roboto-Thin","Roboto-Black"]],["layout","level_1.json","level_2.json","level_3.json","win.json","settings.json"],["shaders","base.f","c.f","base.v","part.f","part.v","partnc.f","partnc.v"]],"version":"1.0.0"}
+"build_res/opts.json":{"options":{"__disableCache":0,"__disableCacheByVer":0,"__storeChildsAsObject":1,"__supportedLangs":["en","ru"],"__defaultTextProperties":{"__fontface":"Roboto_Thin"},"__upscaleResolution":{"x":1280,"y":720},"__localesDir":"lang/","__baseShadersFolder":"shaders/","__baseLayoutsFolder":"layouts/","__baseParticlesFolder":"vfx/","__baseFontsFolder":"fonts/","__disablePacking":1,"__soundDisabled":1},"res":[["locale"],["sound","build_res/sounds.json"],["atlas","build_res/atlas-0.png?","build_res/atlas-0.json?"],["atlas","build_res/atlas-1.png?","build_res/atlas-1.json?"],["effect","tail.effect.json"],["font",["Roboto-Thin","Roboto-Black"]],["layout","level_1.json","level_2.json","level_3.json","win.json","settings.json","slingshot.json"],["shaders","base.f","c.f","base.v","part.f","part.v","partnc.f","partnc.v"]],"version":"1.0.0"}
 ,
 "build_res/sounds.json":{
   "src": [
