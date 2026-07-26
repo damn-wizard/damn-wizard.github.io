@@ -4,8 +4,8 @@
     "name": "win",
     "__alpha": 0.8,
     "__size": [
-      2,
-      2,
+      1,
+      1,
       1,
       1
     ],
@@ -37,316 +37,287 @@
     },
     "__childs": {
       "base": {
-        "__img": "ice_block_1",
+        "__img": "containers/win_container.png",
         "__size": [
-          700,
+          600,
           600
         ],
         "__childs": {
-          "mainContainer": {
-            "__color": "#2134cc",
-            "__img": "circle1",
+          "title": {
+            "sha": 1,
+            "sva": 0,
+            "__size": [
+              0.7,
+              90
+            ],
+            "__text": {
+              "__fontsize": 56,
+              "__lineWidth": 10,
+              "__fontspacing": 10,
+              "__text": "win",
+              "__fontface": "Roboto_Black"
+            },
+            "__y": 105
+          },
+          "stars": {
             "sha": 1,
             "sva": 1,
-            "__corner": {
-              "0": 11,
-              "1": 11,
-              "2": 3,
-              "3": 3
-            },
             "__size": [
-              0.9,
-              0.9
+              490,
+              118
             ],
+            "__y": -69,
             "__childs": {
-              "title": {
+              "firstStar": {
+                "__rotate": 10.87,
+                "__img": "ui/star.png",
+                "sva": 1.1,
+                "__size": [
+                  80,
+                  80
+                ],
+                "__scaleF": 0,
+                "__ofs": [
+                  -70,
+                  4
+                ],
+                "__keyframes": {
+                  "loop": 0,
+                  "__loopDisabled": 1,
+                  "__easing": 6,
+                  "__track": {
+                    "__transform": {
+                      "0": [
+                        -70,
+                        4,
+                        0,
+                        0,
+                        10.87
+                      ],
+                      "47": [
+                        -70,
+                        4,
+                        0.8,
+                        0.8,
+                        10.87
+                      ]
+                    }
+                  }
+                }
+              },
+              "secondStar": {
+                "__img": "star",
+                "sva": 1.1,
+                "__size": [
+                  80,
+                  80
+                ],
+                "__scaleF": 0,
+                "__y": -18,
+                "__keyframes": {
+                  "loop": 0,
+                  "__loopDisabled": 1,
+                  "__easing": 6,
+                  "__track": {
+                    "__transform": {
+                      "0": [
+                        0,
+                        -18,
+                        0,
+                        0,
+                        0
+                      ],
+                      "14": [
+                        0,
+                        -18,
+                        0,
+                        0,
+                        0
+                      ],
+                      "82": [
+                        0,
+                        -18,
+                        1,
+                        1,
+                        0
+                      ]
+                    }
+                  }
+                }
+              },
+              "thirdStar": {
+                "__rotate": -13.21,
+                "__img": "star",
+                "sva": 1.1,
+                "__size": [
+                  80,
+                  80
+                ],
+                "__scaleF": 0.8,
+                "__ofs": [
+                  70,
+                  4
+                ],
+                "__keyframes": {
+                  "loop": 0,
+                  "__loopDisabled": 1,
+                  "__easing": 6,
+                  "__track": {
+                    "__transform": {
+                      "0": [
+                        70,
+                        4,
+                        0,
+                        0,
+                        -13.21
+                      ],
+                      "23": [
+                        70,
+                        4,
+                        0,
+                        0,
+                        -13.21
+                      ],
+                      "82": [
+                        70,
+                        4,
+                        0.8,
+                        0.8,
+                        -13.21
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "stats": {
+            "sha": 1,
+            "sva": 1,
+            "__size": [
+              482,
+              148
+            ],
+            "__y": 49,
+            "__childs": {
+              "levelScore": {
+                "__padding": [
+                  0,
+                  0,
+                  10,
+                  0
+                ],
+                "__img": "ui/panel-default.png",
+                "ha": 1,
+                "va": 1,
                 "sha": 1,
                 "sva": 0,
                 "__size": [
-                  0.7,
-                  90
+                  0.6,
+                  80
                 ],
                 "__text": {
-                  "__fontsize": 80,
-                  "__lineWidth": 10,
-                  "__fontspacing": 10,
-                  "__text": "win",
+                  "__lineWidth": 5,
+                  "__text": "score",
                   "__fontface": "Roboto_Black"
-                },
-                "__y": 10
-              },
-              "stars": {
-                "sha": 1,
-                "sva": 1,
-                "__size": [
-                  0.7,
-                  150,
-                  1
-                ],
-                "__y": -98,
-                "__childs": {
-                  "firstStar": {
-                    "__rotate": 10.87,
-                    "__img": "star",
-                    "sva": 1.1,
-                    "__size": [
-                      100,
-                      100
-                    ],
-                    "__scaleF": 0,
-                    "__ofs": [
-                      -114,
-                      4
-                    ],
-                    "__keyframes": {
-                      "loop": 0,
-                      "__loopDisabled": 1,
-                      "__easing": 6,
-                      "__track": {
-                        "__transform": {
-                          "0": [
-                            -114,
-                            4,
-                            0,
-                            0,
-                            10.87
-                          ],
-                          "47": [
-                            -114,
-                            4,
-                            0.8,
-                            0.8,
-                            10.87
-                          ]
-                        }
-                      }
-                    }
-                  },
-                  "secondStar": {
-                    "__img": "star",
-                    "sva": 1.1,
-                    "__size": [
-                      100,
-                      100
-                    ],
-                    "__scaleF": 0,
-                    "__ofs": [
-                      -13,
-                      -18
-                    ],
-                    "__keyframes": {
-                      "loop": 0,
-                      "__loopDisabled": 1,
-                      "__easing": 6,
-                      "__track": {
-                        "__transform": {
-                          "0": [
-                            -13,
-                            -18,
-                            0,
-                            0,
-                            0
-                          ],
-                          "14": [
-                            -13,
-                            -18,
-                            0,
-                            0,
-                            0
-                          ],
-                          "82": [
-                            -13,
-                            -18,
-                            1,
-                            1,
-                            0
-                          ]
-                        }
-                      }
-                    }
-                  },
-                  "thirdStar": {
-                    "__rotate": -13.21,
-                    "__img": "star",
-                    "sva": 1.1,
-                    "__size": [
-                      100,
-                      100
-                    ],
-                    "__scaleF": 0.8,
-                    "__ofs": [
-                      92,
-                      10
-                    ],
-                    "__keyframes": {
-                      "loop": 0,
-                      "__loopDisabled": 1,
-                      "__easing": 6,
-                      "__track": {
-                        "__transform": {
-                          "0": [
-                            92,
-                            10,
-                            0,
-                            0,
-                            -13.21
-                          ],
-                          "23": [
-                            92,
-                            10,
-                            0,
-                            0,
-                            -13.21
-                          ],
-                          "82": [
-                            92,
-                            10,
-                            0.8,
-                            0.8,
-                            -13.21
-                          ]
-                        }
-                      }
-                    }
-                  }
                 }
               },
-              "stats": {
-                "sha": 1,
-                "sva": 1,
-                "__size": [
-                  0.7,
-                  135,
-                  1
+              "levelThrowsCount": {
+                "__padding": [
+                  0,
+                  0,
+                  10,
+                  0
                 ],
-                "__y": 65,
-                "__childs": {
-                  "levelScore": {
-                    "__color": 53759,
-                    "__spacing": [
-                      0,
-                      0,
-                      0,
-                      15
-                    ],
-                    "__img": "ice_block_2",
-                    "ha": 1,
-                    "va": 1,
-                    "sha": 1,
-                    "sva": 0,
-                    "__size": [
-                      0.7,
-                      60
-                    ],
-                    "__text": {
-                      "__lineWidth": 5,
-                      "__text": "Очки: 0",
-                      "__fontface": "Roboto_Black"
-                    }
-                  },
-                  "levelThrowsCount": {
-                    "__color": 53759,
-                    "__spacing": [
-                      0,
-                      0,
-                      0,
-                      15
-                    ],
-                    "__img": "ice_block_2",
-                    "ha": 1,
-                    "va": 1,
-                    "sha": 1,
-                    "sva": 2,
-                    "__size": [
-                      0.7,
-                      60
-                    ],
-                    "__text": {
-                      "__lineWidth": 5,
-                      "__text": "Броски: 0",
-                      "__fontface": "Roboto_Black",
-                      "__fontWeight": 2
-                    }
-                  }
-                }
-              },
-              "actions": {
+                "__img": "ui/panel-default.png",
+                "ha": 1,
+                "va": 1,
                 "sha": 1,
                 "sva": 2,
                 "__size": [
-                  0.7,
-                  70
+                  0.6,
+                  80
                 ],
-                "__y": -30,
+                "__text": {
+                  "__lineWidth": 5,
+                  "__text": "throws",
+                  "__fontface": "Roboto_Black",
+                  "__fontWeight": 2
+                }
+              }
+            }
+          },
+          "actions": {
+            "sha": 1,
+            "sva": 2,
+            "__size": [
+              0.75,
+              100
+            ],
+            "__y": -84,
+            "__childs": {
+              "againButton": {
+                "__img": "ui/button.png",
+                "sha": 0,
+                "sva": 1,
+                "__size": [
+                  0.48,
+                  1
+                ],
                 "__childs": {
-                  "againButton": {
-                    "__img": "ice_block_2",
-                    "sha": 0,
-                    "sva": 1,
+                  "againButtonText": {
+                    "__padding": [
+                      0,
+                      0,
+                      10,
+                      0
+                    ],
                     "__corner": [
                       11,
                       11
                     ],
                     "__size": [
-                      0.48,
-                      1
+                      0.9,
+                      0.8
                     ],
-                    "__childs": {
-                      "againButtonText": {
-                        "__color": 53759,
-                        "__img": "circle1",
-                        "__corner": [
-                          11,
-                          11
-                        ],
-                        "__size": [
-                          0.9,
-                          0.8
-                        ],
-                        "__text": {
-                          "__lineWidth": 5,
-                          "__text": "try_again",
-                          "__fontface": "Roboto_Black"
-                        }
-                      }
+                    "__text": {
+                      "__lineWidth": 5,
+                      "__text": "try_again",
+                      "__fontface": "Roboto_Black"
                     }
-                  },
-                  "nextButton": {
-                    "__img": "ice_block_2",
-                    "sha": 2,
-                    "sva": 1,
-                    "__corner": [
-                      11,
-                      11
+                  }
+                }
+              },
+              "nextButton": {
+                "__img": "ui/button.png",
+                "sha": 2,
+                "sva": 1,
+                "__size": [
+                  0.48,
+                  1
+                ],
+                "__keyframes": {
+                  "loop": 0,
+                  "__loopDisabled": 1,
+                  "__easing": 27,
+                  "__track": {}
+                },
+                "__childs": {
+                  "nextButtonText": {
+                    "__padding": [
+                      0,
+                      0,
+                      10,
+                      0
                     ],
                     "__size": [
-                      0.48,
-                      1
+                      0.9,
+                      0.8
                     ],
-                    "__keyframes": {
-                      "loop": 0,
-                      "__loopDisabled": 1,
-                      "__easing": 27,
-                      "__track": {}
-                    },
-                    "__childs": {
-                      "nextButtonText": {
-                        "__color": 53759,
-                        "__img": "circle1",
-                        "__corner": [
-                          11,
-                          11
-                        ],
-                        "__size": [
-                          0.9,
-                          0.8
-                        ],
-                        "__text": {
-                          "__lineWidth": 5,
-                          "__text": "next_level",
-                          "__fontface": "Roboto_Black"
-                        }
-                      }
+                    "__text": {
+                      "__lineWidth": 5,
+                      "__text": "next_level",
+                      "__fontface": "Roboto_Black"
                     }
                   }
                 }

@@ -113,18 +113,14 @@
         }
       },
       "mainMenuButtonsBase": {
-        "__color": 53759,
-        "__img": "ice_block_1",
         "__size": [
           319,
           284
         ],
-        "__y": 63,
+        "__y": 135,
         "__childs": {
           "_0": {
-            "__color": "#2134cc",
             "__alpha": 0.5,
-            "__img": "circle1",
             "sha": 1,
             "sva": 1,
             "__corner": [
@@ -144,44 +140,57 @@
                 "sva": 1,
                 "__size": [
                   329,
-                  188
+                  228
                 ],
                 "__childs": {
                   "startGameButton": {
-                    "__img": "ice_block_2",
+                    "__img": "button",
                     "sha": 1,
                     "sva": 0,
                     "__corner": [
                       11,
                       11
                     ],
+                    "__size": [
+                      0.8,
+                      120
+                    ],
                     "__childs": {
                       "startGameButtonText": {
-                        "__color": 53759,
-                        "__img": "circle1",
+                        "sha": 1,
+                        "sva": 1,
                         "__corner": [
                           11,
                           11
                         ],
                         "__size": [
-                          0.9,
-                          0.8
+                          1,
+                          1,
+                          1,
+                          1
                         ],
                         "__text": {
+                          "__fontsize": 38,
                           "__lineWidth": 5,
                           "__text": "start_game",
                           "__fontface": "Roboto_Black"
-                        }
+                        },
+                        "__y": -6
                       }
                     }
                   },
                   "settingsButton": {
-                    "__img": "ice_block_2",
+                    "__img": "button",
                     "sha": 1,
                     "sva": 2,
                     "__corner": [
                       11,
                       11
+                    ],
+                    "__size": [
+                      0.65,
+                      100,
+                      1
                     ],
                     "__keyframes": {
                       "loop": 0,
@@ -191,21 +200,21 @@
                     },
                     "__childs": {
                       "settingsButtonText": {
-                        "__color": 53759,
-                        "__img": "circle1",
                         "__corner": [
                           11,
                           11
                         ],
                         "__size": [
-                          0.9,
-                          0.8
+                          1,
+                          1
                         ],
                         "__text": {
+                          "__fontsize": 28,
                           "__lineWidth": 5,
                           "__text": "settings",
                           "__fontface": "Roboto_Black"
-                        }
+                        },
+                        "__y": -4
                       }
                     }
                   }

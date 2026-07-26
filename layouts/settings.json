@@ -21,23 +21,16 @@
     },
     "__childs": {
       "mainContainer": {
-        "__color": "#2134cc",
         "__padding": [
           15,
           30,
           25,
           30
         ],
-        "__img": "circle1",
-        "__corner": [
-          11,
-          11,
-          3,
-          3
-        ],
+        "__img": "containers/settings_container.png",
         "__size": [
-          600,
-          350
+          500,
+          300
         ],
         "__keyframes": {
           "loop": 0,
@@ -63,8 +56,7 @@
         },
         "__childs": {
           "closeButton": {
-            "__color": 630770,
-            "__img": "circle1",
+            "__img": "circle-button",
             "sha": 2,
             "sva": 0,
             "__size": [
@@ -72,16 +64,15 @@
               60
             ],
             "__ofs": [
-              55,
-              -40
+              29,
+              -31
             ],
             "__childs": {
               "closeButtonIcon": {
-                "__color": "#5f3c27",
-                "__img": "ui/cross.png",
+                "__img": "cross",
                 "__size": [
-                  0.5,
-                  0.5
+                  0.35,
+                  0.35
                 ]
               }
             }
@@ -94,98 +85,112 @@
               53
             ],
             "__text": {
-              "__fontsize": 42,
-              "__lineWidth": 6,
-              "__fontspacing": 5,
+              "__fontsize": 20,
+              "__lineWidth": 5,
+              "__lineColor": 5450,
+              "__fontspacing": 3,
               "__text": "settings",
               "__fontface": "Roboto_Black"
-            }
+            },
+            "__y": 9
           },
           "base": {
-            "__color": 53759,
-            "__padding": [
-              25,
-              30,
-              25,
-              30
-            ],
-            "__img": "ice_block_2",
             "ha": 2,
             "va": 3,
             "sha": 1,
-            "sva": 2,
+            "sva": 1,
             "__size": [
-              1,
-              250,
-              1
+              459,
+              132
             ],
+            "__y": 10,
             "__childs": {
               "row_1": {
+                "sha": 1,
+                "sva": 0,
                 "__size": [
-                  1,
-                  100
+                  0.8,
+                  60
                 ],
                 "__childs": {
-                  "row_1_name": {
+                  "row_1_wrapper": {
                     "sha": 0,
                     "sva": 1,
                     "__size": [
-                      285,
-                      100
+                      0.5,
+                      50
                     ],
-                    "__text": {
-                      "__fontsize": 36,
-                      "__lineWidth": 5,
-                      "__fontspacing": 3,
-                      "__text": "sound",
-                      "__fontface": "Roboto_Black"
+                    "__childs": {
+                      "row_1_name": {
+                        "sha": 2,
+                        "sva": 1,
+                        "__size": [
+                          285,
+                          63,
+                          "o",
+                          "o"
+                        ],
+                        "__text": {
+                          "__fontsize": 36,
+                          "__lineWidth": 5,
+                          "__lineColor": 5450,
+                          "__fontspacing": 3,
+                          "__text": "sound",
+                          "__fontface": "Roboto_Black"
+                        }
+                      }
                     }
                   },
                   "row_1_actions": {
-                    "ha": 4,
+                    "__padding": [
+                      0,
+                      15,
+                      0,
+                      0
+                    ],
+                    "ha": 3,
                     "va": 1,
                     "sha": 2,
                     "sva": 1,
                     "__size": [
-                      135,
-                      60,
-                      "o"
+                      0.5,
+                      60
                     ],
                     "__childs": {
-                      "soundOnButton": {
-                        "__color": 0.9961,
-                        "__size": [
-                          60,
-                          1
-                        ],
-                        "__childs": {
-                          "soundOnButtonIcon": {
-                            "__img": "ui/sound-on.png",
-                            "__size": [
-                              0.7,
-                              0.7
-                            ]
-                          }
-                        }
-                      },
                       "soundOffButton": {
-                        "__color": 0.9961,
                         "__spacing": [
                           0,
                           0,
                           0,
                           15
                         ],
+                        "__img": "ice_block_4",
                         "__size": [
                           60,
                           1
                         ],
                         "__childs": {
                           "soundOffButtonIcon": {
-                            "__img": "ui/sound-off.png",
+                            "__img": "sound-off",
                             "__size": [
-                              0.7,
-                              0.7
+                              0.5,
+                              0.5
+                            ]
+                          }
+                        }
+                      },
+                      "soundOnButton": {
+                        "__img": "ice_block_4",
+                        "__size": [
+                          60,
+                          1
+                        ],
+                        "__childs": {
+                          "soundOnButtonIcon": {
+                            "__img": "sound-on",
+                            "__size": [
+                              0.5,
+                              0.5
                             ]
                           }
                         }
@@ -195,39 +200,68 @@
                 }
               },
               "row_2": {
+                "ha": 1,
+                "va": 1,
+                "sha": 1,
+                "sva": 2,
                 "__size": [
-                  1,
-                  100
+                  0.8,
+                  60
                 ],
                 "__childs": {
-                  "row_2_name": {
+                  "row_2_wrapper": {
                     "sha": 0,
                     "sva": 1,
                     "__size": [
-                      285,
-                      1
+                      0.5,
+                      50
                     ],
-                    "__text": {
-                      "__fontsize": 36,
-                      "__lineWidth": 5,
-                      "__fontspacing": 3,
-                      "__text": "language",
-                      "__fontface": "Roboto_Black"
+                    "__childs": {
+                      "row_2_name": {
+                        "sha": 2,
+                        "sva": 1,
+                        "__size": [
+                          112.363,
+                          60,
+                          "o",
+                          "o"
+                        ],
+                        "__text": {
+                          "__fontsize": 36,
+                          "__lineWidth": 5,
+                          "__lineColor": 5450,
+                          "__fontspacing": 3,
+                          "__text": "language",
+                          "__fontface": "Roboto_Black"
+                        }
+                      }
                     }
                   },
                   "row_2_actions": {
-                    "ha": 4,
+                    "__padding": [
+                      0,
+                      15,
+                      0,
+                      0
+                    ],
+                    "ha": 3,
                     "va": 1,
                     "sha": 2,
                     "sva": 1,
                     "__size": [
-                      135,
-                      60,
-                      "o"
+                      0.5,
+                      60
                     ],
                     "__childs": {
                       "enLangButton": {
                         "__color": 0.9961,
+                        "__spacing": [
+                          0,
+                          0,
+                          0,
+                          15
+                        ],
+                        "__img": "ice_block_4",
                         "__size": [
                           60,
                           1
@@ -236,20 +270,15 @@
                           "enLangButtonIcon": {
                             "__img": "ui/flag-usa.png",
                             "__size": [
-                              0.7,
-                              0.7
+                              0.65,
+                              0.65
                             ]
                           }
                         }
                       },
                       "ruLangButton": {
                         "__color": 0.997,
-                        "__spacing": [
-                          0,
-                          0,
-                          0,
-                          15
-                        ],
+                        "__img": "ice_block_4",
                         "__size": [
                           60,
                           1
@@ -258,8 +287,8 @@
                           "ruLangButtonIcon": {
                             "__img": "ui/flag-russia.png",
                             "__size": [
-                              0.7,
-                              0.7
+                              0.65,
+                              0.65
                             ]
                           }
                         }

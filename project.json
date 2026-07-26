@@ -67,7 +67,8 @@
         "__baseParticlesFolder": "vfx/",
         "__baseFontsFolder": "fonts/",
         "__disablePacking": 1,
-        "__soundDisabled": 1
+        "__soundDisabled": 1,
+        "__minimalTapArea": 10
     },
     "res": [
         [
@@ -86,6 +87,11 @@
             "atlas",
             "build_res/atlas-1.png?",
             "build_res/atlas-1.json?"
+        ],
+        [
+            "atlas",
+            "build_res/atlas-2.png?",
+            "build_res/atlas-2.json?"
         ],
         [
             "effect",
@@ -173,7 +179,8 @@
                     "build_res/*.json",
                     "build_res/*.png",
                     "build_res/*.mp3",
-                    "img/environment/*.png"
+                    "img/environment/*.png",
+                    "img/containers/*.png"
                 ],
                 "dst": "build_res/data.js"
             },

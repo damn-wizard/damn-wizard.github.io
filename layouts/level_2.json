@@ -313,40 +313,39 @@
           0,
           15
         ],
-        "ha": 3,
+        "ha": 1,
         "va": 1,
         "sha": 1,
         "sva": 0,
         "__size": [
           1,
-          75
+          100
         ],
         "__childs": {
           "centeredWrapper": {
             "sha": 1,
-            "sva": 0,
+            "sva": 1,
             "__size": [
-              0.5,
-              75,
+              0.7,
+              0.85,
               1
             ],
             "__childs": {
               "levelScore": {
-                "__color": 53759,
                 "__padding": [
                   0,
-                  15,
-                  0,
+                  35,
+                  5,
                   0
                 ],
-                "__img": "ice_block_2",
+                "__img": "button",
                 "ha": 0,
                 "va": 1,
                 "sha": 0,
                 "sva": 1,
                 "__size": [
-                  180,
-                  50
+                  235,
+                  1
                 ],
                 "__text": {
                   "__lineWidth": 5,
@@ -355,36 +354,41 @@
                 }
               },
               "levelName": {
-                "__color": 53759,
-                "__img": "ice_block_2",
+                "__padding": [
+                  0,
+                  0,
+                  28,
+                  0
+                ],
+                "__img": "panel_level-name",
                 "sha": 1,
                 "sva": 1,
                 "__size": [
-                  205,
-                  50
+                  368,
+                  128
                 ],
                 "__text": {
                   "__lineWidth": 5,
                   "__text": "level",
                   "__fontface": "Roboto_Black"
-                }
+                },
+                "__y": 21
               },
               "levelThrowsCount": {
-                "__color": 53759,
                 "__padding": [
                   0,
-                  15,
-                  0,
+                  35,
+                  5,
                   0
                 ],
-                "__img": "ice_block_2",
+                "__img": "button",
                 "ha": 0,
                 "va": 1,
                 "sha": 2,
                 "sva": 1,
                 "__size": [
-                  180,
-                  50
+                  235,
+                  1
                 ],
                 "__text": {
                   "__lineWidth": 5,
@@ -408,13 +412,12 @@
             "sva": 0,
             "__size": [
               50,
-              150
+              142
             ],
             "__x": -5,
             "__childs": {
               "settingsButton": {
-                "__color": 53759,
-                "__img": "ice_block_4",
+                "__img": "circle-button",
                 "sha": 1,
                 "sva": 0,
                 "__size": [
@@ -425,21 +428,14 @@
                   "settingsButtonIcon": {
                     "__img": "ui/gear-wheel.png",
                     "__size": [
-                      0.75,
-                      0.75
+                      0.5,
+                      0.5
                     ]
                   }
                 }
               },
               "restartButton": {
-                "__color": 53759,
-                "__spacing": [
-                  0,
-                  0,
-                  0,
-                  15
-                ],
-                "__img": "ice_block_4",
+                "__img": "circle-button",
                 "sha": 1,
                 "sva": 2,
                 "__size": [
@@ -452,8 +448,8 @@
                     "sha": 1,
                     "sva": 1,
                     "__size": [
-                      48,
-                      45
+                      0.5,
+                      0.5
                     ],
                     "__x": 1
                   }

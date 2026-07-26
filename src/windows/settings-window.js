@@ -7,10 +7,16 @@ class SettingsWindow {
             ? options.__soundDisabled
             : Number(localIsSoundDisabled);
 
+        this._isMainMenu = false;
+
         this._soundOffButton = null;
         this._soundOnButton = null;
         this._ruLangButton = null;
         this._enLangButton = null;
+    }
+
+    set isMainMenu(value) {
+        this._isMainMenu = value;
     }
 
     get configuredParams() {
@@ -81,10 +87,16 @@ class SettingsWindow {
 
         playSound('click');
 
+        const sound = this._isMainMenu
+            ? 'main-menu-theme'
+            : 'main-theme';
+
+        console.log(sound)
+
         if (isDisabled) {
-            stopSound('main-theme');
+            stopSound(sound);
         } else {
-            playSound('main-theme', 1);
+            playSound(sound, 1);
         }
     }
 

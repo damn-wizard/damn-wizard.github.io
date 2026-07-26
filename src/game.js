@@ -108,6 +108,7 @@ class Game {
     start() {
         playSound('main-menu-theme', 1);
         const mainMenu = scene.__addChildBox(MAIN_MENU);
+        this._settingsWindow.isMainMenu = true;
 
         mainMenu.__setAliasesData({
             startGameButton: (node) => {
@@ -119,6 +120,8 @@ class Game {
 
                     mainMenu.__removeFromParent();
                     delete scene.mainMenu;
+
+                    this._settingsWindow.isMainMenu = false;
 
                     this._openLevel(LEVEL_1);
                 };
