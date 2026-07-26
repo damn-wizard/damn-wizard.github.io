@@ -1,0 +1,220 @@
+[
+  {
+    "name": "mainMenu",
+    "cropx": 1280,
+    "cropy": 720,
+    "__size": [
+      1280,
+      720
+    ],
+    "__childs": {
+      "gameNameTitle": {
+        "sha": 1,
+        "sva": 0,
+        "__size": [
+          1,
+          0.35,
+          1,
+          1
+        ],
+        "__text": {
+          "__fontsize": 96,
+          "__lineWidth": 5,
+          "__lineColor": 266935,
+          "__text": "Snowball\nSmash",
+          "__fontface": "Roboto_Back",
+          "__italic": 1,
+          "__smallCaps": 1,
+          "__shadow": {
+            "x": 3,
+            "y": 4,
+            "__blur": 4,
+            "__color": 186
+          }
+        }
+      },
+      "background": {
+        "__img": "environment/background_main-menu.png",
+        "__size": [
+          1,
+          1
+        ]
+      },
+      "blocks": {
+        "sha": 2,
+        "sva": 2,
+        "__size": [
+          352,
+          366
+        ],
+        "__ofs": [
+          -30,
+          44
+        ],
+        "__childs": {
+          "_0": {
+            "__img": "ice_block_4.png",
+            "__size": [
+              126,
+              126
+            ],
+            "__ofs": [
+              80,
+              56,
+              -1
+            ]
+          },
+          "_1": {
+            "__img": "ice_block_3.png",
+            "__size": [
+              78,
+              192
+            ],
+            "__ofs": [
+              129,
+              23
+            ]
+          },
+          "_2": {
+            "__rotate": -23.59,
+            "__img": "ice_block_3.png",
+            "__size": [
+              80,
+              190
+            ],
+            "__ofs": [
+              -136,
+              24,
+              -1
+            ]
+          },
+          "_3": {
+            "__img": "ice_block_1.png",
+            "__size": [
+              178,
+              175
+            ],
+            "__ofs": [
+              -10,
+              32
+            ]
+          },
+          "_4": {
+            "__img": "ice_block_1.png",
+            "__size": [
+              102,
+              100
+            ],
+            "__ofs": [
+              -26,
+              -103
+            ]
+          }
+        }
+      },
+      "mainMenuButtonsBase": {
+        "__color": 53759,
+        "__img": "ice_block_1",
+        "__size": [
+          319,
+          284
+        ],
+        "__y": 63,
+        "__childs": {
+          "_0": {
+            "__color": "#2134cc",
+            "__alpha": 0.5,
+            "__img": "circle1",
+            "sha": 1,
+            "sva": 1,
+            "__corner": [
+              11,
+              11
+            ],
+            "__size": [
+              0.9,
+              0.9
+            ],
+            "__z": -1,
+            "__childs": {
+              "actions": {
+                "ha": 1,
+                "va": 3,
+                "sha": 1,
+                "sva": 1,
+                "__size": [
+                  329,
+                  188
+                ],
+                "__childs": {
+                  "startGameButton": {
+                    "__img": "ice_block_2",
+                    "sha": 1,
+                    "sva": 0,
+                    "__corner": [
+                      11,
+                      11
+                    ],
+                    "__childs": {
+                      "startGameButtonText": {
+                        "__color": 53759,
+                        "__img": "circle1",
+                        "__corner": [
+                          11,
+                          11
+                        ],
+                        "__size": [
+                          0.9,
+                          0.8
+                        ],
+                        "__text": {
+                          "__lineWidth": 5,
+                          "__text": "start_game",
+                          "__fontface": "Roboto_Black"
+                        }
+                      }
+                    }
+                  },
+                  "settingsButton": {
+                    "__img": "ice_block_2",
+                    "sha": 1,
+                    "sva": 2,
+                    "__corner": [
+                      11,
+                      11
+                    ],
+                    "__keyframes": {
+                      "loop": 0,
+                      "__loopDisabled": 1,
+                      "__easing": 27,
+                      "__track": {}
+                    },
+                    "__childs": {
+                      "settingsButtonText": {
+                        "__color": 53759,
+                        "__img": "circle1",
+                        "__corner": [
+                          11,
+                          11
+                        ],
+                        "__size": [
+                          0.9,
+                          0.8
+                        ],
+                        "__text": {
+                          "__lineWidth": 5,
+                          "__text": "settings",
+                          "__fontface": "Roboto_Black"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

@@ -217,6 +217,8 @@ class Level {
             this._blocks = [];
             this._destructableBlocksCount = 0;
             this._maxScore = 0;
+
+            stopSound('main-theme');
         }
     }
 
@@ -238,7 +240,7 @@ class Level {
         this._level.__traverse(node => {
             const body = node.__ph_body;
 
-            if (body && !body.isStatic && !!node.__isBreakable) {
+            if (body && !body.isStatic && node.__userData && !!node.__userData.isBreakable) {
                 node.__needBreaks = 1;
 
                 this._destructableBlocksCount++;

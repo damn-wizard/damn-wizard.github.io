@@ -106,6 +106,31 @@ class Game {
     }
 
     start() {
-        this._openLevel(LEVEL_1);
+        playSound('main-menu-theme', 1);
+        const mainMenu = scene.__addChildBox(MAIN_MENU);
+
+        mainMenu.__setAliasesData({
+            startGameButton: (node) => {
+                node.__onTapHighlight = 1;
+                node.__onTap = () => {
+                    playSound('click');
+
+                    stopSound('main-menu-theme');
+
+                    mainMenu.__removeFromParent();
+                    delete scene.mainMenu;
+
+                    this._openLevel(LEVEL_1);
+                };
+            },
+            settingsButton: (node) => {
+                node.__onTapHighlight = 1;
+                node.__onTap = () => {
+                    playSound('click');
+
+                    BUS.__post(__ON_SHOW_SETTINGS_WINDOW);
+                };
+            },
+        });
     }
 }

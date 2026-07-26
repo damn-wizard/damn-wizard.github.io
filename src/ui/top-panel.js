@@ -57,9 +57,19 @@ class TopPanel {
             levelThrowsCount: (node) => {
                 this._levelThrowsCount = node;
             },
+            restartButton: (node) => {
+                playSound('click');
+
+                node.__onTapHighlight = 1;
+                node.__onTap = () => {
+                    BUS.__post(__ON_RESTART_LEVEL);
+                };
+            },
             settingsButton: (node) => {
                 node.__onTapHighlight = 1;
                 node.__onTap = () => {
+                    playSound('click');
+
                     BUS.__post(__ON_SHOW_SETTINGS_WINDOW);
                 };
             },

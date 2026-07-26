@@ -68,24 +68,6 @@
           1
         ],
         "__childs": {
-          "_0": {
-            "__physics": {
-              "__isStatic": false,
-              "__friction": 10,
-              "__frictionAir": 1,
-              "__frictionStatic": 50,
-              "__restitution": 0,
-              "__density": 1,
-              "__bodyType": 0
-            },
-            "__img": "ice_block_1.png",
-            "__isBreakable": true,
-            "__ofs": [
-              393,
-              -27,
-              -1
-            ]
-          },
           "ground": {
             "__physics": {
               "__isStatic": true,
@@ -115,94 +97,6 @@
               }
             }
           },
-          "_2": {
-            "__physics": {
-              "__isStatic": false,
-              "__friction": 10,
-              "__frictionAir": 1,
-              "__frictionStatic": 50,
-              "__restitution": 0,
-              "__density": 1,
-              "__bodyType": 0
-            },
-            "__img": "ice_block_2.png",
-            "__isBreakable": true,
-            "__size": [
-              189,
-              61
-            ],
-            "__ofs": [
-              394,
-              66,
-              -1
-            ]
-          },
-          "_3": {
-            "__physics": {
-              "__isStatic": false,
-              "__friction": 10,
-              "__frictionAir": 1,
-              "__frictionStatic": 50,
-              "__restitution": 0,
-              "__density": 1,
-              "__bodyType": 0
-            },
-            "__img": "ice_block_3.png",
-            "__isBreakable": true,
-            "__size": [
-              60,
-              158
-            ],
-            "__ofs": [
-              303,
-              176,
-              -1
-            ]
-          },
-          "_4": {
-            "__physics": {
-              "__isStatic": false,
-              "__friction": 10,
-              "__frictionAir": 1,
-              "__frictionStatic": 50,
-              "__restitution": 0,
-              "__density": 1,
-              "__bodyType": 0
-            },
-            "__img": "ice_block_3.png",
-            "__isBreakable": true,
-            "__size": [
-              60,
-              158
-            ],
-            "__ofs": [
-              494,
-              176,
-              -1
-            ]
-          },
-          "_5": {
-            "__physics": {
-              "__isStatic": false,
-              "__friction": 10,
-              "__frictionAir": 1,
-              "__frictionStatic": 50,
-              "__restitution": 0,
-              "__density": 1,
-              "__bodyType": 1
-            },
-            "__img": "ice_block_4.png",
-            "__isBreakable": true,
-            "__size": [
-              126,
-              126
-            ],
-            "__ofs": [
-              398,
-              190,
-              -1
-            ]
-          },
           "blockWall": {
             "__color": "#f30000",
             "__physics": {
@@ -221,6 +115,194 @@
               1
             ],
             "__x": 674
+          },
+          "breakable_2": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "ice_block_1.png",
+            "__userData": {
+              "isBreakable": true
+            },
+            "__ofs": [
+              393,
+              -27,
+              -1
+            ]
+          },
+          "breakable_3": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "ice_block_2.png",
+            "__userData": {
+              "isBreakable": true
+            },
+            "__size": [
+              189,
+              61
+            ],
+            "__ofs": [
+              394,
+              66,
+              -1
+            ]
+          },
+          "breakable_4": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "ice_block_3.png",
+            "__userData": {
+              "isBreakable": true
+            },
+            "__size": [
+              60,
+              158
+            ],
+            "__ofs": [
+              303,
+              176,
+              -1
+            ]
+          },
+          "breakable_5": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "ice_block_3.png",
+            "__userData": {
+              "isBreakable": true
+            },
+            "__size": [
+              60,
+              158
+            ],
+            "__ofs": [
+              494,
+              176,
+              -1
+            ]
+          },
+          "breakable_6": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 1
+            },
+            "__img": "ice_block_4.png",
+            "__userData": {
+              "isBreakable": true
+            },
+            "__size": [
+              126,
+              126
+            ],
+            "__ofs": [
+              398,
+              190,
+              -1
+            ]
+          },
+          "breakable_7": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "ice_block_3.png",
+            "__userData": {
+              "isBreakable": true
+            },
+            "__size": [
+              60,
+              158
+            ],
+            "__ofs": [
+              47,
+              176,
+              -1
+            ]
+          },
+          "breakable_8": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "ice_block_2.png",
+            "__userData": {
+              "isBreakable": true
+            },
+            "__size": [
+              249,
+              61
+            ],
+            "__ofs": [
+              170,
+              66,
+              -1
+            ]
+          },
+          "breakable_9": {
+            "__physics": {
+              "__isStatic": false,
+              "__friction": 10,
+              "__frictionAir": 1,
+              "__frictionStatic": 50,
+              "__restitution": 0,
+              "__density": 1,
+              "__bodyType": 0
+            },
+            "__img": "ice_block_1.png",
+            "__userData": {
+              "isBreakable": true
+            },
+            "__size": [
+              150,
+              137
+            ],
+            "__ofs": [
+              176,
+              183,
+              -1
+            ]
           }
         }
       },
@@ -240,66 +322,101 @@
           75
         ],
         "__childs": {
-          "levelName": {
-            "__color": 53759,
-            "__spacing": [
-              0,
-              0,
-              0,
-              15
-            ],
-            "__img": "ice_block_2",
+          "centeredWrapper": {
+            "sha": 1,
+            "sva": 0,
             "__size": [
-              175,
-              50
+              0.5,
+              75,
+              1
             ],
-            "__text": {
-              "__lineWidth": 5,
-              "__text": "level",
-              "__fontface": "Roboto_Black"
+            "__childs": {
+              "levelScore": {
+                "__color": 53759,
+                "__padding": [
+                  0,
+                  15,
+                  0,
+                  0
+                ],
+                "__img": "ice_block_2",
+                "ha": 0,
+                "va": 1,
+                "sha": 0,
+                "sva": 1,
+                "__size": [
+                  180,
+                  50
+                ],
+                "__text": {
+                  "__lineWidth": 5,
+                  "__text": "score",
+                  "__fontface": "Roboto_Black"
+                }
+              },
+              "levelName": {
+                "__color": 53759,
+                "__img": "ice_block_2",
+                "sha": 1,
+                "sva": 1,
+                "__size": [
+                  205,
+                  50
+                ],
+                "__text": {
+                  "__lineWidth": 5,
+                  "__text": "level",
+                  "__fontface": "Roboto_Black"
+                }
+              },
+              "levelThrowsCount": {
+                "__color": 53759,
+                "__padding": [
+                  0,
+                  15,
+                  0,
+                  0
+                ],
+                "__img": "ice_block_2",
+                "ha": 0,
+                "va": 1,
+                "sha": 2,
+                "sva": 1,
+                "__size": [
+                  180,
+                  50
+                ],
+                "__text": {
+                  "__lineWidth": 5,
+                  "__text": "throws",
+                  "__fontface": "Roboto_Black",
+                  "__fontWeight": 2
+                }
+              }
             }
           },
-          "levelScore": {
-            "__color": 53759,
-            "__spacing": [
-              0,
-              0,
-              0,
-              15
-            ],
+          "buttonsWrapper": {
             "__padding": [
+              10,
               0,
-              25,
               0,
               0
             ],
-            "__img": "ice_block_2",
-            "ha": 0,
-            "va": 1,
-            "__size": [
-              220,
-              50
-            ],
-            "__text": {
-              "__lineWidth": 5,
-              "__text": "score",
-              "__fontface": "Roboto_Black"
-            }
-          },
-          "wrapper": {
-            "ha": 4,
-            "va": 1,
+            "ha": 1,
+            "va": 3,
             "sha": 2,
-            "sva": 1,
+            "sva": 0,
             "__size": [
-              0.5,
               50,
-              1
+              150
             ],
+            "__x": -5,
             "__childs": {
               "settingsButton": {
                 "__color": 53759,
                 "__img": "ice_block_4",
+                "sha": 1,
+                "sva": 0,
                 "__size": [
                   60,
                   60
@@ -314,7 +431,7 @@
                   }
                 }
               },
-              "levelThrowsCount": {
+              "restartButton": {
                 "__color": 53759,
                 "__spacing": [
                   0,
@@ -322,24 +439,24 @@
                   0,
                   15
                 ],
-                "__padding": [
-                  0,
-                  25,
-                  0,
-                  0
-                ],
-                "__img": "ice_block_2",
-                "ha": 0,
-                "va": 1,
+                "__img": "ice_block_4",
+                "sha": 1,
+                "sva": 2,
                 "__size": [
-                  175,
-                  50
+                  60,
+                  60
                 ],
-                "__text": {
-                  "__lineWidth": 5,
-                  "__text": "throws",
-                  "__fontface": "Roboto_Black",
-                  "__fontWeight": 2
+                "__childs": {
+                  "restartButtonIcon": {
+                    "__img": "ui/restart.png",
+                    "sha": 1,
+                    "sva": 1,
+                    "__size": [
+                      48,
+                      45
+                    ],
+                    "__x": 1
+                  }
                 }
               }
             }

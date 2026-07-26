@@ -18,6 +18,7 @@ const LEVEL_1 = `level${LEVEL_NAME_SEPARATOR}1`;
 const LEVEL_2 = `level${LEVEL_NAME_SEPARATOR}2`;
 const LEVEL_3 = `level${LEVEL_NAME_SEPARATOR}3`;
 const ALL_LEVELS = [LEVEL_1, LEVEL_2, LEVEL_3];
+const MAIN_MENU = 'main-menu';
 
 // Windows
 const WIN_WINDOW = 'win';
