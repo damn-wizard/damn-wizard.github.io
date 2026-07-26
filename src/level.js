@@ -228,7 +228,7 @@ class Level {
         const cloudsParams = new Clouds(this._level).configuredParams;
         const topPanelParams = new TopPanel(this._levelName).configuredParams;
 
-        this._level.__setAliasesData(Object.assign(cloudsParams, topPanelParams))
+        this._level.__setAliasesData(Object.assign({}, cloudsParams, topPanelParams));
 
         this._level.update(1);
         this._level.__updateMatrixWorld(1);

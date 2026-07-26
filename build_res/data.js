@@ -139,7 +139,7 @@
               "__bodyType": 0
             },
             "__img": "ice_block_1.png",
-            "__class": "test_class",
+            "__isBreakable": true,
             "__ofs": [
               393,
               -27,
@@ -186,6 +186,7 @@
               "__bodyType": 0
             },
             "__img": "ice_block_2.png",
+            "__isBreakable": true,
             "__size": [
               189,
               61
@@ -207,6 +208,7 @@
               "__bodyType": 0
             },
             "__img": "ice_block_3.png",
+            "__isBreakable": true,
             "__size": [
               60,
               158
@@ -228,6 +230,7 @@
               "__bodyType": 0
             },
             "__img": "ice_block_3.png",
+            "__isBreakable": true,
             "__size": [
               60,
               158
@@ -249,6 +252,7 @@
               "__bodyType": 1
             },
             "__img": "ice_block_4.png",
+            "__isBreakable": true,
             "__size": [
               126,
               126
@@ -289,6 +293,7 @@
               "__bodyType": 0
             },
             "__img": "ice_block_3.png",
+            "__isBreakable": true,
             "__size": [
               60,
               158
@@ -491,42 +496,6 @@
           }
         }
       },
-      "userInputArea": {
-        "__color": "#5f12e9",
-        "__selectable": false,
-        "sha": 0,
-        "sva": 2,
-        "__size": [
-          140,
-          100
-        ],
-        "__ofs": [
-          105,
-          -96,
-          -15
-        ],
-        "__childs": {
-          "_0": {
-            "__color": "#fb22a0",
-            "__rotate": 3.9,
-            "__size": [
-              25,
-              25
-            ],
-            "__childs": {
-              "rubber": {
-                "__color": "#362207",
-                "sha": 2,
-                "sva": 1,
-                "__size": [
-                  148,
-                  18
-                ]
-              }
-            }
-          }
-        }
-      },
       "ph_world": {
         "__size": [
           1,
@@ -534,7 +503,6 @@
         ],
         "__childs": {
           "_0": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -545,10 +513,10 @@
               "__bodyType": 0
             },
             "__img": "ice_block_1.png",
-            "__class": "test_class",
+            "__isBreakable": true,
             "__ofs": [
-              185,
-              -75,
+              393,
+              -27,
               -1
             ]
           },
@@ -582,7 +550,6 @@
             }
           },
           "_2": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -592,20 +559,19 @@
               "__density": 1,
               "__bodyType": 0
             },
-            "__rotate": 9.52,
             "__img": "ice_block_2.png",
+            "__isBreakable": true,
             "__size": [
-              147,
-              45
+              189,
+              61
             ],
             "__ofs": [
-              335,
-              80,
+              394,
+              66,
               -1
             ]
           },
           "_3": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -615,20 +581,19 @@
               "__density": 1,
               "__bodyType": 0
             },
-            "__rotate": -31.43,
             "__img": "ice_block_3.png",
+            "__isBreakable": true,
             "__size": [
-              59,
-              151
+              60,
+              158
             ],
             "__ofs": [
-              227,
+              303,
               176,
               -1
             ]
           },
           "_4": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -638,20 +603,19 @@
               "__density": 1,
               "__bodyType": 0
             },
-            "__rotate": 16.91,
             "__img": "ice_block_3.png",
+            "__isBreakable": true,
             "__size": [
-              43,
+              60,
               158
             ],
             "__ofs": [
-              423,
-              170,
+              494,
+              176,
               -1
             ]
           },
           "_5": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -662,12 +626,13 @@
               "__bodyType": 1
             },
             "__img": "ice_block_4.png",
+            "__isBreakable": true,
             "__size": [
               126,
               126
             ],
             "__ofs": [
-              335,
+              398,
               190,
               -1
             ]
@@ -751,7 +716,7 @@
             ],
             "__text": {
               "__lineWidth": 5,
-              "__text": "Очки: 0",
+              "__text": "score",
               "__fontface": "Roboto_Black"
             }
           },
@@ -806,7 +771,7 @@
                 ],
                 "__text": {
                   "__lineWidth": 5,
-                  "__text": "Броски: 0",
+                  "__text": "throws",
                   "__fontface": "Roboto_Black",
                   "__fontWeight": 2
                 }
@@ -883,42 +848,6 @@
           }
         }
       },
-      "userInputArea": {
-        "__color": "#5f12e9",
-        "__selectable": false,
-        "sha": 0,
-        "sva": 2,
-        "__size": [
-          140,
-          100
-        ],
-        "__ofs": [
-          105,
-          -96,
-          -15
-        ],
-        "__childs": {
-          "_0": {
-            "__color": "#fb22a0",
-            "__rotate": 3.9,
-            "__size": [
-              25,
-              25
-            ],
-            "__childs": {
-              "rubber": {
-                "__color": "#362207",
-                "sha": 2,
-                "sva": 1,
-                "__size": [
-                  148,
-                  18
-                ]
-              }
-            }
-          }
-        }
-      },
       "ph_world": {
         "__size": [
           1,
@@ -926,7 +855,6 @@
         ],
         "__childs": {
           "_0": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -937,10 +865,10 @@
               "__bodyType": 0
             },
             "__img": "ice_block_1.png",
-            "__class": "test_class",
+            "__isBreakable": true,
             "__ofs": [
-              185,
-              -75,
+              393,
+              -27,
               -1
             ]
           },
@@ -974,7 +902,6 @@
             }
           },
           "_2": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -984,20 +911,19 @@
               "__density": 1,
               "__bodyType": 0
             },
-            "__rotate": 9.52,
             "__img": "ice_block_2.png",
+            "__isBreakable": true,
             "__size": [
-              147,
-              45
+              189,
+              61
             ],
             "__ofs": [
-              335,
-              80,
+              394,
+              66,
               -1
             ]
           },
           "_3": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -1007,20 +933,19 @@
               "__density": 1,
               "__bodyType": 0
             },
-            "__rotate": -31.43,
             "__img": "ice_block_3.png",
+            "__isBreakable": true,
             "__size": [
-              59,
-              151
+              60,
+              158
             ],
             "__ofs": [
-              227,
+              303,
               176,
               -1
             ]
           },
           "_4": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -1030,20 +955,19 @@
               "__density": 1,
               "__bodyType": 0
             },
-            "__rotate": 16.91,
             "__img": "ice_block_3.png",
+            "__isBreakable": true,
             "__size": [
-              43,
+              60,
               158
             ],
             "__ofs": [
-              423,
-              170,
+              494,
+              176,
               -1
             ]
           },
           "_5": {
-            "__isBreakable": true,
             "__physics": {
               "__isStatic": false,
               "__friction": 10,
@@ -1054,12 +978,13 @@
               "__bodyType": 1
             },
             "__img": "ice_block_4.png",
+            "__isBreakable": true,
             "__size": [
               126,
               126
             ],
             "__ofs": [
-              335,
+              398,
               190,
               -1
             ]
@@ -1143,7 +1068,7 @@
             ],
             "__text": {
               "__lineWidth": 5,
-              "__text": "Очки: 0",
+              "__text": "score",
               "__fontface": "Roboto_Black"
             }
           },
@@ -1198,7 +1123,7 @@
                 ],
                 "__text": {
                   "__lineWidth": 5,
-                  "__text": "Броски: 0",
+                  "__text": "throws",
                   "__fontface": "Roboto_Black",
                   "__fontWeight": 2
                 }

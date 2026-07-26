@@ -79,7 +79,7 @@
               "__bodyType": 0
             },
             "__img": "ice_block_1.png",
-            "__class": "test_class",
+            "__isBreakable": true,
             "__ofs": [
               393,
               -27,
@@ -126,6 +126,7 @@
               "__bodyType": 0
             },
             "__img": "ice_block_2.png",
+            "__isBreakable": true,
             "__size": [
               189,
               61
@@ -147,6 +148,7 @@
               "__bodyType": 0
             },
             "__img": "ice_block_3.png",
+            "__isBreakable": true,
             "__size": [
               60,
               158
@@ -168,6 +170,7 @@
               "__bodyType": 0
             },
             "__img": "ice_block_3.png",
+            "__isBreakable": true,
             "__size": [
               60,
               158
@@ -189,6 +192,7 @@
               "__bodyType": 1
             },
             "__img": "ice_block_4.png",
+            "__isBreakable": true,
             "__size": [
               126,
               126
@@ -229,6 +233,7 @@
               "__bodyType": 0
             },
             "__img": "ice_block_3.png",
+            "__isBreakable": true,
             "__size": [
               60,
               158

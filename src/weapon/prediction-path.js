@@ -18,15 +18,15 @@ class PredictionPath {
         });
     }
 
-    update(loadedProjectileWorldPosition, powerPullOffset) {
-        if (powerPullOffset.__length() < SLINGSHOT_MIN_SHOT_PULL) {
+    update(isLengthEnough, position, velocity) {
+        if (!isLengthEnough) {
             this.hide();
 
             return;
         }
 
-        let { x, y } = loadedProjectileWorldPosition;
-        let { x: velocityX, y: velocityY } = powerPullOffset.__clone().__multiplyScalar(-SLINGSHOT_SHOT_POWER);
+        let { x, y } = position;
+        let { x: velocityX, y: velocityY } = velocity;
 
         $each(this._predictionDots, (dot, index) => {
             for (let step = 0; step < PREDICTION_PATH_STEPS_PER_DOT; step++) {

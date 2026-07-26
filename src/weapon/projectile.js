@@ -42,14 +42,16 @@ class Projectile {
 
     }
 
-    launch(originPosition, visualPullOffset, powerPullOffset) {
-        const { x, y } = this.calculateLoadedPosition(originPosition, visualPullOffset);
+    launch(launchPosition, velocity) {
+        playSound('punch');
 
         if (this._loadedProjectile && !this._loadedProjectile.__destructed) {
             this._loadedProjectile.__removeFromParent();
 
             this._loadedProjectile = null;
         }
+
+        const { x, y } = launchPosition;
 
         const projectile = this._level.__addChildBox({
             __img: 'circle1',
@@ -72,8 +74,6 @@ class Projectile {
 
 
         if (projectile.__ph_body) {
-            const velocity = powerPullOffset.__clone().__multiplyScalar(-SLINGSHOT_SHOT_POWER);
-
             ph_Body.setVelocity(projectile.__ph_body, velocity);
         }
 

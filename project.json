@@ -27,20 +27,18 @@
             "shadow.js",
             "windows.js"
         ],
-
         "../../eeditor/plugins/": [
             "physics.js",
             "matter.js"
         ],
-
         "src/": [
             "loading.js",
             "constants.js",
             "windows/settings-window.js",
             "windows/win-window.js",
-            "weapons/projectile.js",
-            "weapons/prediction-path.js",
-            "weapons/slingshot.js",
+            "weapon/projectile.js",
+            "weapon/prediction-path.js",
+            "weapon/slingshot.js",
             "environment/clouds.js",
             "ui/top-panel.js",
             "level.js",

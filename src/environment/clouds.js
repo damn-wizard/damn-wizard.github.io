@@ -4,23 +4,19 @@ class Clouds {
             throw new Error('[Clouds]: Не была передана текущая нода уровеня');
         }
 
-        this._levelNode = level;
-        this._cloudsNode = null;
+        this._level = level;
+        this._clouds = null;
 
-        this._step = this._levelNode.__size.x;
+        this._step = this._level.__size.x;
         this._stepMultiplier = 2;
 
-        this._currentFirstCloudNode = null;
-        this._currentSecondCloudNode = null;
-        this._finishedFirstCloudNode = null;
-        this._finishedSecondCloudNode = null;
+        this._currentFirstCloud = null;
+        this._currentSecondCloud = null;
+        this._finishedFirstCloud = null;
+        this._finishedSecondCloud = null;
 
         this._interval = null;
         this._halfCloudsTime = Math.floor(CLOUDS_TIME / 2);
-
-        this._configuredParams = {
-            clouds: this._configureClouds.bind(this),
-        };
 
         BUS.__addEventListener(__ON_LEVEL_OPENED, () => {
             this._init();
@@ -38,33 +34,33 @@ class Clouds {
     }
 
     get configuredParams() {
-        return this._configuredParams;
-    }
-
-    _configureClouds(node) {
-        this._cloudsNode = node;
+        return {
+            clouds: (node) => {
+                this._clouds = node;
+            }
+        };
     }
 
     _animClouds() {
         const finishedX = this._step * this._stepMultiplier;
 
-        this._cloudsNode.__anim(
-            { __x: finishedX },
+        this._clouds.__anim(
+            {__x: finishedX},
             CLOUDS_TIME,
             0,
             easeLinear
         );
 
         _setTimeout(() => {
-            this._finishedFirstCloudNode = this._currentFirstCloudNode;
-            this._currentFirstCloudNode = this._currentFirstCloudNode.__clone();
-            this._currentFirstCloudNode.__x = -finishedX;
-            this._cloudsNode.__addChildBox(this._currentFirstCloudNode).update();
+            this._finishedFirstCloud = this._currentFirstCloud;
+            this._currentFirstCloud = this._currentFirstCloud.__clone();
+            this._currentFirstCloud.__x = -finishedX;
+            this._clouds.__addChildBox(this._currentFirstCloud).update();
 
-            this._finishedSecondCloudNode = this._currentSecondCloudNode;
-            this._currentSecondCloudNode = this._currentSecondCloudNode.__clone();
-            this._currentSecondCloudNode.__x = -finishedX - this._step;
-            this._cloudsNode.__addChildBox(this._currentSecondCloudNode).update();
+            this._finishedSecondCloud = this._currentSecondCloud;
+            this._currentSecondCloud = this._currentSecondCloud.__clone();
+            this._currentSecondCloud.__x = -finishedX - this._step;
+            this._clouds.__addChildBox(this._currentSecondCloud).update();
         }, this._halfCloudsTime);
     }
 
@@ -72,13 +68,13 @@ class Clouds {
     _init() {
         consoleLog('[Clouds]: inited');
 
-        [this._currentFirstCloudNode, this._currentSecondCloudNode] = this._cloudsNode.__childs;
+        [this._currentFirstCloud, this._currentSecondCloud] = this._clouds.__childs;
 
         this._animClouds();
 
         this._interval = _setInterval(() => {
-            this._finishedFirstCloudNode.__removeFromParent();
-            this._finishedSecondCloudNode.__removeFromParent();
+            this._finishedFirstCloud.__removeFromParent();
+            this._finishedSecondCloud.__removeFromParent();
 
             this._stepMultiplier += 2;
 

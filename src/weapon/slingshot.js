@@ -34,8 +34,16 @@ class Slingshot {
         });
     }
 
-    get _calculatedLoadedProjectileWorldPosition() {
-        return this._projectile.calculateLoadedPosition(this._shotOriginWorldPosition, this._currentVisualPull);
+    get _isPowerPullLengthEnough() {
+        return this._currentPowerPull.__length() > SLINGSHOT_MIN_SHOT_PULL;
+    }
+
+    get _shotOriginCurrentWorldPosition() {
+        return this._shotOriginWorldPosition.__clone().add(this._currentVisualPull);
+    }
+
+    get _velocity() {
+        return this._currentPowerPull.__clone().__multiplyScalar(-SLINGSHOT_SHOT_POWER);
     }
 
     get _rubbersContactPoint() {
@@ -80,7 +88,7 @@ class Slingshot {
                         }
 
                         this._predictionPath.create();
-                        this._predictionPath.update(this._calculatedLoadedProjectileWorldPosition, this._currentPowerPull);
+                        this._predictionPath.update(this._isPowerPullLengthEnough, this._shotOriginCurrentWorldPosition, this._velocity);
                     };
                     node.__drag = (x, y) => {
                         const powerPull = new Vector2(
@@ -89,7 +97,9 @@ class Slingshot {
                         );
 
                         powerPull.x = mmin(0, powerPull.x);
-                        powerPull.y = powerPull.x < SLINGSHOT_MAX_POWER_PULL ? mmin(85, powerPull.y) : powerPull.y
+                        powerPull.y = powerPull.x < SLINGSHOT_MAX_POWER_PULL
+                            ? mmin(SLINGSHOT_POWER_PULL_Y_CONSTRAINT, powerPull.y)
+                            : powerPull.y;
 
                         this._constraintPull(powerPull, SLINGSHOT_MAX_POWER_PULL);
                         this._updatePull(powerPull);
@@ -103,9 +113,10 @@ class Slingshot {
                             return;
                         }
 
-                        playSound('punch');
+                        this._projectile.launch(this._shotOriginCurrentWorldPosition, this._velocity);
 
-                        this._projectile.launch(this._shotOriginWorldPosition, this._currentVisualPull, this._currentPowerPull);
+                        BUS.__post(__ON_SHOOT);
+
                         this._resetRubbers();
                         this._startBulletReload();
                     }
@@ -181,7 +192,8 @@ class Slingshot {
 
         this._updateRubbers();
         this._projectile.updateLoadedProjectilePosition(this._shotOriginLocalPosition, this._currentVisualPull, this._currentPowerPull);
-        this._predictionPath.update(this._calculatedLoadedProjectileWorldPosition, this._currentPowerPull);
+
+        this._predictionPath.update(this._isPowerPullLengthEnough, this._shotOriginCurrentWorldPosition, this._velocity);
     }
 
     _startBulletReload() {

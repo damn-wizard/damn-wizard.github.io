@@ -2,56 +2,76 @@ class SettingsWindow {
     constructor() {
         this._currentLang = getUserLanguage();
 
-        const localIsSoundDisabled = LocalGetKey(LS_SOUND_DISABLED_VALUE, options.__soundDisabled)
-        this._isSoundDisabled = options.__soundDisabled = localIsSoundDisabled === null ? options.__soundDisabled : Number(localIsSoundDisabled);
+        const localIsSoundDisabled = LocalGetKey(LS_SOUND_DISABLED_VALUE, options.__soundDisabled);
+        this._isSoundDisabled = options.__soundDisabled = localIsSoundDisabled === null
+            ? options.__soundDisabled
+            : Number(localIsSoundDisabled);
 
-        this._soundOffButtonNode = null;
-        this._soundOnButtonNode = null;
-        this._ruLangButtonNode = null;
-        this._enLangButtonNode = null;
-
-        this._configuredParams = {
-            closeButton: this._configureCloseButton.bind(this),
-            soundOffButton: this._configureSoundOffButton.bind(this),
-            soundOnButton: this._configureSoundOnButton.bind(this),
-            ruLangButton: this._configureRuLangButton.bind(this),
-            enLangButton: this._configureEnLangButton.bind(this),
-        }
+        this._soundOffButton = null;
+        this._soundOnButton = null;
+        this._ruLangButton = null;
+        this._enLangButton = null;
     }
 
     get configuredParams() {
-        return this._configuredParams;
-    }
+        return {
+            closeButton: (node) => {
+                node.__onTapHighlight = 1;
+                node.__onTap = () => {
+                    playSound('click');
 
-    _configureCloseButton(node) {
-        node.__onTapHighlight = 1;
-        node.__onTap = () => {
-            playSound('click');
+                    closeWindow(SETTINGS_WINDOW);
+                };
+            },
+            soundOffButton: (node) => {
+                node.__onTapHighlight = 1;
+                node.__onTap = () => {
+                    if (this._isSoundDisabled) {
+                        return;
+                    }
 
-            closeWindow(SETTINGS_WINDOW);
-        }
-    }
+                    this._changeSoundDisabled(1);
+                };
 
-    _configureSoundOffButton(node) {
-        node.__onTapHighlight = 1;
-        node.__onTap = () => {
-            if (this._isSoundDisabled) return;
+                this._soundOffButton = node;
+            },
+            soundOnButton: (node) => {
+                node.__onTapHighlight = 1;
+                node.__onTap = () => {
+                    if (!this._isSoundDisabled) {
+                        return;
+                    }
 
-            this._changeSoundDisabled(1);
-        }
+                    this._changeSoundDisabled(0);
+                };
 
-        this._soundOffButtonNode = node;
-    }
+                this._soundOnButton = node;
+            },
+            ruLangButton: (node) => {
+                node.__onTapHighlight = 1;
+                node.__onTap = () => {
+                    if (this._currentLang === 'ru') {
+                        return;
+                    }
 
-    _configureSoundOnButton(node) {
-        node.__onTapHighlight = 1;
-        node.__onTap = () => {
-            if (!this._isSoundDisabled) return;
+                    this._tryToChangeLang('ru');
+                };
 
-            this._changeSoundDisabled(0);
-        }
+                this._ruLangButton = node;
+            },
+            enLangButton: (node) => {
+                node.__onTapHighlight = 1;
+                node.__onTap = () => {
+                    if (this._currentLang === 'en') {
+                        return;
+                    }
 
-        this._soundOnButtonNode = node;
+                    this._tryToChangeLang('en');
+                };
+
+                this._enLangButton = node;
+            },
+        };
     }
 
     _changeSoundDisabled(isDisabled) {
@@ -68,30 +88,10 @@ class SettingsWindow {
         }
     }
 
-    _configureRuLangButton(node) {
-        node.__onTapHighlight = 1;
-        node.__onTap = () => {
-            if (this._currentLang === 'ru') return;
-
-            this._tryToChangeLang('ru');
-        }
-
-        this._ruLangButtonNode = node;
-    }
-
-    _configureEnLangButton(node) {
-        node.__onTapHighlight = 1;
-        node.__onTap = () => {
-            if (this._currentLang === 'en') return;
-
-            this._tryToChangeLang('en');
-        }
-
-        this._enLangButtonNode = node;
-    }
-
     _tryToChangeLang(newLang) {
-        if (!__checkUserLanguage(newLang)) return;
+        if (!__checkUserLanguage(newLang)) {
+            return;
+        }
 
         playSound('click');
 
@@ -119,13 +119,21 @@ class SettingsWindow {
     }
 
     _setSoundActiveButton() {
-        this._soundOffButtonNode.__alpha = this._isSoundDisabled ? 1 : 0.5;
-        this._soundOnButtonNode.__alpha = this._isSoundDisabled ? 0.5 : 1;
+        this._soundOffButton.__alpha = this._isSoundDisabled
+            ? ACTIVE_BUTTON_OPACITY
+            : NOT_ACTIVE_BUTTON_OPACITY;
+        this._soundOnButton.__alpha = this._isSoundDisabled
+            ? NOT_ACTIVE_BUTTON_OPACITY
+            : ACTIVE_BUTTON_OPACITY;
     }
 
     _setLangActiveButton() {
-        this._ruLangButtonNode.__alpha = this._currentLang === 'ru' ? 1 : 0.5;
-        this._enLangButtonNode.__alpha = this._currentLang === 'ru' ? 0.5 : 1;
+        this._ruLangButton.__alpha = this._currentLang === 'ru'
+            ? ACTIVE_BUTTON_OPACITY
+            : NOT_ACTIVE_BUTTON_OPACITY;
+        this._enLangButton.__alpha = this._currentLang === 'ru'
+            ? NOT_ACTIVE_BUTTON_OPACITY
+            : ACTIVE_BUTTON_OPACITY;
     }
 
     _setActiveButtons() {

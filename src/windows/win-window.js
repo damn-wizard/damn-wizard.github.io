@@ -5,64 +5,51 @@ class WinWindow {
         this._maxScore = maxScore;
         this._destructableBlocksCount = destructableBlocksCount;
 
-        this._firstStarNode = null;
-        this._secondStarNode = null;
-        this._thirdStarNode = null;
-
-        this._configuredParams = {
-            againButton: this._configureAgainButton.bind(this),
-            nextButton: this._configureNextButton.bind(this),
-            levelScore: this._configureLevelScore.bind(this),
-            levelThrowsCount: this._configureLevelThrowsCount.bind(this),
-            firstStar: this._configureFirstStar.bind(this),
-            secondStar: this._configureSecondStar.bind(this),
-            thirdStar: this._configureThirdStar.bind(this),
-        }
+        this._firstStar = null;
+        this._secondStar = null;
+        this._thirdStar = null;
     }
 
     get configuredParams() {
-        return this._configuredParams;
-    }
+        return {
+            againButton: (node) => {
+                node.__onTapHighlight = 1;
+                node.__onTap = () => {
+                    playSound('click');
 
-    _configureAgainButton(node) {
-        node.__onTapHighlight = 1;
-        node.__onTap = () => {
-            playSound('click');
+                    BUS.__post(__ON_RESTART_LEVEL);
+                };
+            },
+            nextButton: (node) => {
+                node.__onTapHighlight = 1;
+                node.__onTap = () => {
+                    playSound('click');
 
-            BUS.__post(__ON_RESTART_LEVEL);
-        }
-    }
+                    BUS.__post(__ON_CHANGE_LEVEL);
+                };
+            },
+            levelScore: (node) => {
+                node.__text = TR('score', this._score);
+            },
+            levelThrowsCount: (node) => {
+                node.__text = TR('throws', this._throws);
+            },
+            firstStar: (node) => {
+                node.____visible = 0;
 
-    _configureNextButton(node) {
-        node.__onTapHighlight = 1;
-        node.__onTap = () => {
-            playSound('click');
+                this._firstStar = node;
+            },
+            secondStar: (node) => {
+                node.____visible = 0;
 
-            BUS.__post(__ON_CHANGE_LEVEL);
-        }
-    }
+                this._secondStar = node;
+            },
+            thirdStar: (node) => {
+                node.____visible = 0;
 
-    _configureLevelScore(node) {
-        node.__text = TR('score', this._score);
-    }
-
-    _configureLevelThrowsCount(node) {
-        node.__text = TR('throws', this._throws);
-    }
-
-    _configureFirstStar(node) {
-        node.____visible = 0;
-        this._firstStarNode = node;
-    }
-
-    _configureSecondStar(node) {
-        node.____visible = 0;
-        this._secondStarNode = node;
-    }
-
-    _configureThirdStar(node) {
-        node.____visible = 0;
-        this._thirdStarNode = node;
+                this._thirdStar = node;
+            },
+        };
     }
 
     calculateStars() {
@@ -73,14 +60,14 @@ class WinWindow {
 
         const levelRating = scoreEffective * SCORE_WEIGHT_RATING + throwEffective * THROW_WEIGHT_RATING;
 
-        this._firstStarNode.__visible = 1;
+        this._firstStar.__visible = 1;
 
         if (levelRating >= RATING_FOR_TWO_STARS) {
-            this._secondStarNode.__visible = 1;
+            this._secondStar.__visible = 1;
         }
 
         if (levelRating >= RATING_FOR_THREE_STARS) {
-            this._thirdStarNode.__visible = 1;
+            this._thirdStar.__visible = 1;
         }
     }
 }
