@@ -91,7 +91,6 @@ class SettingsWindow {
             ? 'main-menu-theme'
             : 'main-theme';
 
-        console.log(sound)
 
         if (isDisabled) {
             stopSound(sound);
